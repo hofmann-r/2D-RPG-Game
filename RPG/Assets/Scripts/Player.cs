@@ -106,29 +106,33 @@ public class Player : Character
 
 		if (Input.GetKeyDown (KeyCode.Space)) {
 
-			Block ();
-
-			if (MyTarget != null && !isAttackingShield && !IsMoving && InLineOfSight()) {
-				attackShieldRoutine = StartCoroutine (AttackShield ());
-			}
 		}
 
 	}
 
-	private IEnumerator AttackShield ()
+	private IEnumerator AttackShield (int spellIndex)
 	{
 
 		myAnimator.SetBool ("attackShield", true);
 		isAttackingShield = true;
 		yield return new WaitForSeconds (1); //tempo de cast da magia
-		CastSpell ();
 
-		StopAttackShield ();
+        //CastSpell ();
+
+        Instantiate(spellPrefab[spellIndex], exitPoints[exitIndex].position, Quaternion.identity);  //quaternion não deixar rotacionar
+
+        StopAttackShield();
 	}
 
-	public void CastSpell ()
+	public void CastSpell (int spellIndex)
 	{
-		Instantiate (spellPrefab [0], exitPoints [exitIndex].position, Quaternion.identity);  //quaternion não deixar rotacionar
+
+        Block();
+
+        if (MyTarget != null && !isAttackingShield && !IsMoving && InLineOfSight()) {
+            attackShieldRoutine = StartCoroutine(AttackShield(spellIndex));
+        }
+
 	}
 
 	private bool InLineOfSight ()
