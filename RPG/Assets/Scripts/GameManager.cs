@@ -31,13 +31,12 @@ public class GameManager : MonoBehaviour
 				//ataca apenas tags que contenham inimigos
 				//FUTURO: colocar tags de objetos para destruir e achar itens
 				if (hit.collider.tag == "Enemy") {
-					player.MyTarget = hit.transform;
+					player.MyTarget = hit.transform.GetChild(0);
 				}
 			} else {
 				//tirar o alvo
 				player.MyTarget = null;
 			}
-	
 		} 
 	}
 }

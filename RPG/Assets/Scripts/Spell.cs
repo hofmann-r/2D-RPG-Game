@@ -5,20 +5,19 @@ using UnityEngine;
 public class Spell : MonoBehaviour
 {
 
-	private Rigidbody2D myRigidBody;
-
-	[SerializeField]
-	private float speed;
-
-	private Transform target;
+    private Rigidbody2D myRigidBody;
 
 
+    [SerializeField]
+    private float speed;
+
+    public Transform MyTarget { get; set; }
 	// Use this for initialization
 	void Start ()
 	{
 		myRigidBody = GetComponent<Rigidbody2D> ();	
 		//TESTE APENAS
-		target = GameObject.Find ("Target").transform;
+		//target = GameObject.Find ("Target").transform;
 	}
 
 	public void Fire ()
@@ -32,13 +31,24 @@ public class Spell : MonoBehaviour
 		
 	}
 
-	private void FixedUpdate ()
-	{
-		Vector2 direction = target.position - transform.position;
-		myRigidBody.velocity = direction.normalized * speed;
+    private void FixedUpdate()
+    {
+        if (MyTarget != null) {
+            Vector2 direction = MyTarget.position - transform.position;
+            myRigidBody.velocity = direction.normalized * speed;
 
-		float angle = Mathf.Atan2 (direction.y, direction.x) * Mathf.Rad2Deg;
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
-		transform.rotation = Quaternion.AngleAxis (angle, Vector3.forward);
-	}
+            transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "HitBox" && collision.transform == MyTarget) {
+            GetComponent<Animator>().SetTrigger("impact");
+            myRigidBody.velocity = Vector2.zero;
+            MyTarget = null;
+        }
+    }
 }
