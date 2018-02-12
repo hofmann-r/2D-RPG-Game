@@ -1,0 +1,430 @@
+fileFormatVersion: 2
+guid: fefd83bbc8b7a48468267bc0d061a5cd
+timeCreated: 1518447197
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: drawn-explosion-sprite-2_0
+    21300002: drawn-explosion-sprite-2_1
+    21300004: drawn-explosion-sprite-2_2
+    21300006: drawn-explosion-sprite-2_3
+    21300008: drawn-explosion-sprite-2_4
+    21300010: drawn-explosion-sprite-2_5
+    21300012: drawn-explosion-sprite-2_6
+    21300014: drawn-explosion-sprite-2_7
+    21300016: drawn-explosion-sprite-2_8
+    21300018: drawn-explosion-sprite-2_9
+    21300020: drawn-explosion-sprite-2_10
+    21300022: drawn-explosion-sprite-2_11
+    21300024: drawn-explosion-sprite-2_12
+    21300026: drawn-explosion-sprite-2_13
+    21300028: drawn-explosion-sprite-2_14
+    21300030: drawn-explosion-sprite-2_15
+    21300032: drawn-explosion-sprite-2_16
+    21300034: drawn-explosion-sprite-2_17
+    21300036: drawn-explosion-sprite-2_18
+    21300038: drawn-explosion-sprite-2_19
+    21300040: drawn-explosion-sprite-2_20
+    21300042: drawn-explosion-sprite-2_21
+    21300044: drawn-explosion-sprite-2_22
+  externalObjects: {}
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: drawn-explosion-sprite-2_0
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 771
+        width: 202
+        height: 140
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: drawn-explosion-sprite-2_1
+      rect:
+        serializedVersion: 2
+        x: 316
+        y: 765
+        width: 202
+        height: 163
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: drawn-explosion-sprite-2_2
+      rect:
+        serializedVersion: 2
+        x: 583
+        y: 783
+        width: 202
+        height: 139
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: drawn-explosion-sprite-2_3
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 513
+        width: 202
+        height: 169
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: drawn-explosion-sprite-2_4
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 516
+        width: 205
+        height: 165
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: drawn-explosion-sprite-2_5
+      rect:
+        serializedVersion: 2
+        x: 577
+        y: 518
+        width: 208
+        height: 159
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: drawn-explosion-sprite-2_6
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 262
+        width: 220
+        height: 197
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: drawn-explosion-sprite-2_7
+      rect:
+        serializedVersion: 2
+        x: 274
+        y: 244
+        width: 258
+        height: 236
+      alignment: 9
+      pivot: {x: 0.52481943, y: 0.57235473}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: drawn-explosion-sprite-2_8
+      rect:
+        serializedVersion: 2
+        x: 677
+        y: 446
+        width: 9
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: drawn-explosion-sprite-2_9
+      rect:
+        serializedVersion: 2
+        x: 558
+        y: 268
+        width: 229
+        height: 166
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: drawn-explosion-sprite-2_10
+      rect:
+        serializedVersion: 2
+        x: 632
+        y: 437
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: drawn-explosion-sprite-2_11
+      rect:
+        serializedVersion: 2
+        x: 736
+        y: 432
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: drawn-explosion-sprite-2_12
+      rect:
+        serializedVersion: 2
+        x: 557
+        y: 387
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: drawn-explosion-sprite-2_13
+      rect:
+        serializedVersion: 2
+        x: 802
+        y: 373
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: drawn-explosion-sprite-2_14
+      rect:
+        serializedVersion: 2
+        x: 788
+        y: 363
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: drawn-explosion-sprite-2_15
+      rect:
+        serializedVersion: 2
+        x: 434
+        y: 72
+        width: 11
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: drawn-explosion-sprite-2_16
+      rect:
+        serializedVersion: 2
+        x: 337
+        y: 99
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: drawn-explosion-sprite-2_17
+      rect:
+        serializedVersion: 2
+        x: 329
+        y: 69
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: drawn-explosion-sprite-2_18
+      rect:
+        serializedVersion: 2
+        x: 380
+        y: 82
+        width: 9
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: drawn-explosion-sprite-2_19
+      rect:
+        serializedVersion: 2
+        x: 492
+        y: 72
+        width: 9
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: drawn-explosion-sprite-2_20
+      rect:
+        serializedVersion: 2
+        x: 490
+        y: 58
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: drawn-explosion-sprite-2_21
+      rect:
+        serializedVersion: 2
+        x: 498
+        y: 57
+        width: 5
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: drawn-explosion-sprite-2_22
+      rect:
+        serializedVersion: 2
+        x: 411
+        y: 135
+        width: 22
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    outline: []
+    physicsShape: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

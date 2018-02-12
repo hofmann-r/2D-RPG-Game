@@ -22,12 +22,13 @@ public class Player : Character
     private Block[] blocks;
 
     [SerializeField]
-    private GameObject[] spellPrefab;
-
-    [SerializeField]
     private Transform[] exitPoints;
 
     private int exitIndex = 2;
+
+	private SpellBook spellBook;
+
+
 
     //private Transform target;
 
@@ -40,9 +41,12 @@ public class Player : Character
         //inimigo fixo
         //target = GameObject.Find ("Target").transform;
 
+		spellBook = GetComponent<SpellBook> ();
         health.Initialize(healthValue, maxHealth);
 
         mana.Initialize(manaValue, maxMana);
+
+
 
         base.Start();
     }
@@ -113,13 +117,15 @@ public class Player : Character
     private IEnumerator AttackShield(int spellIndex)
     {
 
+		Spell newSpell = spellBook.CastSpell(spellIndex);
+
         myAnimator.SetBool("attackShield", true);
         isAttackingShield = true;
         yield return new WaitForSeconds(1); //tempo de cast da magia
 
         //CastSpell ();
 
-        Spell s = Instantiate(spellPrefab[spellIndex], exitPoints[exitIndex].position, Quaternion.identity).GetComponent<Spell>();  //quaternion não deixar rotacionar
+		SpellScript s = Instantiate(newSpell., exitPoints[exitIndex].position, Quaternion.identity).GetComponent<SpellScript>();  //quaternion não deixar rotacionar
 
         s.MyTarget = MyTarget;
 
