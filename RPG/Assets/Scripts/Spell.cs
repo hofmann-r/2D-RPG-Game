@@ -2,28 +2,27 @@
 using UnityEngine;
 
 [Serializable]
-public class Spell
-{
-	[SerializeField]
-	private string name;
+public class Spell {
+    [SerializeField]
+    private string name;
 
-	[SerializeField]
-	private int damage;
+    [SerializeField]
+    private int damage;
 
-	[SerializeField]
-	private Sprite icon;
+    [SerializeField]
+    private Sprite icon;
 
-	[SerializeField]
-	private float speed;
+    [SerializeField]
+    private float speed;
 
-	[SerializeField]
-	private float castTime;
+    [SerializeField]
+    private float castTime;
 
-	[SerializeField]
-	private GameObject spellPrefab;
+    [SerializeField]
+    private GameObject spellPrefab;
 
-	[SerializeField]
-	private Color barColor;
+    [SerializeField]
+    private Color barColor;
 
     public string MyName {
         get {

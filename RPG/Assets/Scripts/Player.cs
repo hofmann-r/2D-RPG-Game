@@ -2,17 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : Character
-{
-    [SerializeField]
-    private Stat health;
+public class Player : Character {
+
 
     [SerializeField]
     private Stat mana;
 
-    private float maxHealth = 100;
+   
 
-    private float healthValue = 100;
+
 
     private float maxMana = 50;
 
@@ -26,7 +24,7 @@ public class Player : Character
 
     private int exitIndex = 2;
 
-	private SpellBook spellBook;
+    private SpellBook spellBook;
 
 
 
@@ -36,13 +34,12 @@ public class Player : Character
 
 
 
-    protected override void Start()
-    {
+    protected override void Start() {
         //inimigo fixo
         //target = GameObject.Find ("Target").transform;
 
-		spellBook = GetComponent<SpellBook> ();
-        health.Initialize(healthValue, maxHealth);
+        spellBook = GetComponent<SpellBook>();
+        
 
         mana.Initialize(manaValue, maxMana);
 
@@ -51,15 +48,13 @@ public class Player : Character
         base.Start();
     }
 
-    protected override void Update()
-    {
+    protected override void Update() {
         GetInput();
 
         base.Update();
     }
 
-    private void GetInput()
-    {
+    private void GetInput() {
         direction = Vector2.zero;
 
 
@@ -114,10 +109,10 @@ public class Player : Character
 
     }
 
-    private IEnumerator AttackShield(int spellIndex)
-    {
+    private IEnumerator AttackShield(int spellIndex) {
+        Transform currentTarget = MyTarget;
 
-		Spell newSpell = spellBook.CastSpell(spellIndex);
+        Spell newSpell = spellBook.CastSpell(spellIndex);
 
         myAnimator.SetBool("attackShield", true);
         isAttackingShield = true;
@@ -125,15 +120,16 @@ public class Player : Character
 
         //CastSpell ();
 
-		SpellScript s = Instantiate(newSpell.MySpellPrefab, exitPoints[exitIndex].position, Quaternion.identity).GetComponent<SpellScript>();  //quaternion não deixar rotacionar
+        if (currentTarget != null && InLineOfSight()) {
+            SpellScript s = Instantiate(newSpell.MySpellPrefab, exitPoints[exitIndex].position, Quaternion.identity).GetComponent<SpellScript>();  //quaternion não deixar rotacionar
 
-        s.MyTarget = MyTarget;
+            s.Initialize(currentTarget, newSpell.MyDamage);
+        }
 
         StopAttackShield();
     }
 
-    public void CastSpell(int spellIndex)
-    {
+    public void CastSpell(int spellIndex) {
 
         Block();
 
@@ -143,21 +139,20 @@ public class Player : Character
 
     }
 
-    private bool InLineOfSight()
-    {
-        Vector3 targetDirection = (MyTarget.transform.position - transform.position).normalized;
-
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, targetDirection, Vector2.Distance(transform.position, MyTarget.transform.position), 256); //8 - block layer 
-
-        if (hit.collider == null) {
-            return true;
+    private bool InLineOfSight() {
+        if (MyTarget != null) {
+            Vector3 targetDirection = (MyTarget.transform.position - transform.position).normalized;
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, targetDirection, Vector2.Distance(transform.position, MyTarget.transform.position), 256); //8 - block layer 
+            if (hit.collider == null) {
+                return true;
+            }
         }
+
 
         return false;
     }
 
-    private void Block()
-    {
+    private void Block() {
         foreach (Block block in blocks) {
             block.Deactivate();
         }
@@ -165,8 +160,7 @@ public class Player : Character
         blocks[exitIndex].Activate();
     }
 
-    public override void StopAttackShield()
-    {
+    public override void StopAttackShield() {
         spellBook.StopCasting();
         base.StopAttackShield();
     }

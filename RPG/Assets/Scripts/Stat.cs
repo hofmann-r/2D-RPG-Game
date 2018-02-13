@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Stat : MonoBehaviour
-{
+public class Stat : MonoBehaviour {
 
     private Image content;
 
@@ -35,7 +34,10 @@ public class Stat : MonoBehaviour
 
             currentFill = currentValue / MyMaxValue;
 
-            statValuetext.text = currentValue + "/" + MyMaxValue;
+            if (statValuetext != null) {
+                statValuetext.text = currentValue + "/" + MyMaxValue;
+            }
+
         }
     }
 
@@ -43,24 +45,28 @@ public class Stat : MonoBehaviour
 
 
     // Use this for initialization
-    void Start()
-    {
-      //  MyMaxValue = 100;
+    void Start() {
+        //  MyMaxValue = 100;
         content = GetComponent<Image>();
     }
 
     // Update is called once per frame
-    void Update()
-    {
+    void Update() {
         if (currentFill != content.fillAmount) {
             content.fillAmount = Mathf.Lerp(content.fillAmount, currentFill, Time.deltaTime * lerpSpeed);
         }
         //content.fillAmount = currentFill;
     }
 
-    public void Initialize(float currentValue, float maxValue)
-    {
+    public void Initialize(float currentValue, float maxValue) {
+
+        if (content == null) {
+            content = GetComponent<Image>();
+        }
+
         MyMaxValue = maxValue;
         MyCurrentValue = currentValue;
+
+        content.fillAmount = MyCurrentValue / MyMaxValue;
     }
 }

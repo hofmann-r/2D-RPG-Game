@@ -2,11 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-/// <summary>
-/// This is an abstract class that all characters needs to inherit from
-/// </summary>
-public abstract class Character : MonoBehaviour
-{
+[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(Animator))]
+public abstract class Character : MonoBehaviour {
 
     [SerializeField]
     private float speed;
@@ -18,7 +16,23 @@ public abstract class Character : MonoBehaviour
     private Rigidbody2D myRigidbody;
 
     protected Coroutine attackShieldRoutine;
+
     protected bool isAttackingShield = false;
+
+    [SerializeField]
+    private float initHealth;
+
+    [SerializeField]
+    protected Transform hitBox;
+
+    [SerializeField]
+    protected Stat health;
+
+    public Stat MyHealth {
+        get {
+            return health; 
+        }
+    }
 
     public bool IsMoving {
         get {
@@ -26,32 +40,29 @@ public abstract class Character : MonoBehaviour
         }
     }
     // Use this for initialization
-    protected virtual void Start()
-    {
+    protected virtual void Start() {
+
+        health.Initialize(initHealth, initHealth);
 
         myAnimator = GetComponent<Animator>();
         myRigidbody = GetComponent<Rigidbody2D>();
     }
 
-    protected virtual void Update()
-    {
+    protected virtual void Update() {
         HandleLayers();
     }
 
-    private void FixedUpdate()
-    {
+    private void FixedUpdate() {
         Move();
     }
 
-    public void Move()
-    {
+    public void Move() {
         //old
         //transform.Translate (direction * speed * Time.deltaTime);
         myRigidbody.velocity = direction.normalized * speed;
     }
 
-    public void HandleLayers()
-    {
+    public void HandleLayers() {
         if (IsMoving) {
             ActivateLayer("WalkLayer");
             myAnimator.SetFloat("x", direction.x);
@@ -65,8 +76,7 @@ public abstract class Character : MonoBehaviour
         }
     }
 
-    public virtual void StopAttackShield()
-    {
+    public virtual void StopAttackShield() {
         if (attackShieldRoutine != null) {
             StopCoroutine(attackShieldRoutine);
             isAttackingShield = false;
@@ -75,12 +85,19 @@ public abstract class Character : MonoBehaviour
 
     }
 
-    public void ActivateLayer(string layerName)
-    {
+    public void ActivateLayer(string layerName) {
         for (int i = 0; i < myAnimator.layerCount; i++) {
             myAnimator.SetLayerWeight(i, 0);
         }
         myAnimator.SetLayerWeight(myAnimator.GetLayerIndex(layerName), 1);
+    }
+
+    public virtual void TakeDamage(int damage) {
+        health.MyCurrentValue -= damage;
+
+        if(health.MyCurrentValue <= 0) {
+            myAnimator.SetTrigger("die");
+        }
     }
 
 }

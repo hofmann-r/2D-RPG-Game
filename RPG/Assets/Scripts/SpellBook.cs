@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SpellBook : MonoBehaviour
-{
+public class SpellBook : MonoBehaviour {
     [SerializeField]
     private Image castingBar;
 
@@ -28,19 +27,16 @@ public class SpellBook : MonoBehaviour
     private Coroutine fadeRoutine;
 
     // Use this for initialization
-    void Start()
-    {
+    void Start() {
 
     }
 
     // Update is called once per frame
-    void Update()
-    {
+    void Update() {
 
     }
 
-    public Spell CastSpell(int index)
-    {
+    public Spell CastSpell(int index) {
         spellName.text = spells[index].MyName;
 
         icon.sprite = spells[index].MyIcon;
@@ -55,8 +51,7 @@ public class SpellBook : MonoBehaviour
         return spells[index];
     }
 
-    private IEnumerator Progress(int index)
-    {
+    private IEnumerator Progress(int index) {
         float timePassed = Time.deltaTime;
 
         float rate = 1.0f / spells[index].MyCastTime;
@@ -71,7 +66,7 @@ public class SpellBook : MonoBehaviour
             timePassed += Time.deltaTime;
 
             castTime.text = (spells[index].MyCastTime - timePassed).ToString("F1");
-            if(spells[index].MyCastTime - timePassed < 0) {
+            if (spells[index].MyCastTime - timePassed < 0) {
                 castTime.text = "0.0";
             }
 
@@ -80,8 +75,7 @@ public class SpellBook : MonoBehaviour
         StopCasting();
     }
 
-    private IEnumerator FadeBar()
-    {
+    private IEnumerator FadeBar() {
         float rate = 1.0f / 0.45f;
 
         float progress = 0.0f;
@@ -96,15 +90,14 @@ public class SpellBook : MonoBehaviour
         }
     }
 
-    public void StopCasting()
-    {
+    public void StopCasting() {
 
-        if(fadeRoutine != null) {
+        if (fadeRoutine != null) {
             StopCoroutine(fadeRoutine);
             canvasGroup.alpha = 0;
             fadeRoutine = null;
         }
-        if(spellRoutine != null) {
+        if (spellRoutine != null) {
             StopCoroutine(spellRoutine);
             spellRoutine = null;
         }
