@@ -224,6 +224,8 @@
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
     <Compile Include="Assets\Scripts\Spell.cs" />
+    <Compile Include="Assets\Scripts\SpellBook.cs" />
+    <Compile Include="Assets\Scripts\SpellScript.cs" />
     <Compile Include="Assets\Scripts\Stat.cs" />
     <Compile Include="Assets\Scripts\UIManager.cs" />
     <Compile Include="Assets\SpellBehaviour.cs" />

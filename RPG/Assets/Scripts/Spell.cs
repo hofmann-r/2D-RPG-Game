@@ -24,5 +24,47 @@ public class Spell
 
 	[SerializeField]
 	private Color barColor;
+
+    public string MyName {
+        get {
+            return name;
+        }
+    }
+
+    public int MyDamage {
+        get {
+            return damage;
+        }
+    }
+
+    public Sprite MyIcon {
+        get {
+            return icon;
+        }
+    }
+
+    public float MySpeed {
+        get {
+            return speed;
+        }
+    }
+
+    public float MyCastTime {
+        get {
+            return castTime;
+        }
+    }
+
+    public GameObject MySpellPrefab {
+        get {
+            return spellPrefab;
+        }
+    }
+
+    public Color MyBarColor {
+        get {
+            return barColor;
+        }
+    }
 }
 

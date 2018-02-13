@@ -65,7 +65,7 @@ public abstract class Character : MonoBehaviour
         }
     }
 
-    public void StopAttackShield()
+    public virtual void StopAttackShield()
     {
         if (attackShieldRoutine != null) {
             StopCoroutine(attackShieldRoutine);

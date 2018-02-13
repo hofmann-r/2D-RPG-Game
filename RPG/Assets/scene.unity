@@ -310,7 +310,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 69898951}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -359, y: 187.06024, z: 0}
+  m_LocalPosition: {x: -359, y: 187.07837, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 326899690}
@@ -640,7 +640,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 333088267}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.040001, y: 0.119999886, z: 0}
+  m_LocalPosition: {x: 8.044998, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 545376898}
@@ -648,8 +648,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 8.04, y: 0.12}
-  m_SizeDelta: {x: 175.53, y: 21.97}
+  m_AnchoredPosition: {x: 8.045, y: 0}
+  m_SizeDelta: {x: 175.54, y: 21.74}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &333088269
 MonoBehaviour:
@@ -663,7 +663,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.39705884, b: 0.39705884, a: 1}
+  m_Color: {r: 1, g: 0.24264705, b: 0.24264705, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1030,6 +1030,7 @@ GameObject:
   - component: {fileID: 545376898}
   - component: {fileID: 545376900}
   - component: {fileID: 545376899}
+  - component: {fileID: 545376901}
   m_Layer: 5
   m_Name: Background
   m_TagString: Untagged
@@ -1092,6 +1093,17 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 545376897}
+--- !u!225 &545376901
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 545376897}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &560326746
 GameObject:
   m_ObjectHideFlags: 0
@@ -1147,7 +1159,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 3}
     m_FontSize: 30
     m_FontStyle: 1
     m_BestFit: 0
@@ -1690,8 +1702,8 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1252728657}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 415, y: 233.5, z: 0}
-  m_LocalScale: {x: 1.0375, y: 1.0375, z: 1.0375}
+  m_LocalPosition: {x: 319, y: 179.5, z: 0}
+  m_LocalScale: {x: 0.7975, y: 0.7975, z: 0.7975}
   m_Children:
   - {fileID: 69898952}
   - {fileID: 502800323}
@@ -1979,10 +1991,6 @@ MonoBehaviour:
     second: {fileID: 317453641}
   - first: {fileID: 317453641}
     second: {fileID: 1541426257}
-  spellPrefab:
-  - {fileID: 1568532076131600, guid: 04e81e53fdabee24eb8027b783621e75, type: 2}
-  - {fileID: 1853084822712696, guid: 228324092f9a6734da0667be0a666157, type: 2}
-  - {fileID: 1110155372992624, guid: 0811482518589a249be981f065024b5c, type: 2}
   exitPoints:
   - {fileID: 1042685535}
   - {fileID: 1874667390}
@@ -2095,6 +2103,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2b5d203ab7b54f4dafa518d0f7f2bdf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  castingBar: {fileID: 333088269}
+  spellName: {fileID: 1469812933}
+  castTime: {fileID: 1915151774}
   spells:
   - name: Flame Strike
     damage: 5
@@ -2103,7 +2114,7 @@ MonoBehaviour:
     castTime: 2
     spellPrefab: {fileID: 1568532076131600, guid: 04e81e53fdabee24eb8027b783621e75,
       type: 2}
-    barColor: {r: 0.9632353, g: 0.35413063, b: 0.35413063, a: 0}
+    barColor: {r: 0.8235294, g: 0.2179931, b: 0.2179931, a: 1}
   - name: Frost Bite
     damage: 7
     icon: {fileID: 21300000, guid: 248dbd5728848a34b999cf0b03f65222, type: 3}
@@ -2111,7 +2122,7 @@ MonoBehaviour:
     castTime: 2.5
     spellPrefab: {fileID: 1853084822712696, guid: 228324092f9a6734da0667be0a666157,
       type: 2}
-    barColor: {r: 0.61764705, g: 0.6993914, b: 1, a: 0}
+    barColor: {r: 0.375, g: 0.5086206, b: 1, a: 1}
   - name: Flash
     damage: 3
     icon: {fileID: 21300000, guid: 0598bec24dc53ac4a8f6ee3d1b918c26, type: 3}
@@ -2119,7 +2130,9 @@ MonoBehaviour:
     castTime: 1
     spellPrefab: {fileID: 1110155372992624, guid: 0811482518589a249be981f065024b5c,
       type: 2}
-    barColor: {r: 0.94594324, g: 1, b: 0.6985294, a: 0}
+    barColor: {r: 0.9464503, g: 1, b: 0.029411793, a: 1}
+  icon: {fileID: 1113267849}
+  canvasGroup: {fileID: 545376901}
 --- !u!1 &1508307126
 GameObject:
   m_ObjectHideFlags: 0
@@ -3084,7 +3097,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 3}
     m_FontSize: 30
     m_FontStyle: 1
     m_BestFit: 0
@@ -3158,7 +3171,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 3}
     m_FontSize: 30
     m_FontStyle: 1
     m_BestFit: 0

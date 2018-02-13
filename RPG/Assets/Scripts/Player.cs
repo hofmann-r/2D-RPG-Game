@@ -121,11 +121,11 @@ public class Player : Character
 
         myAnimator.SetBool("attackShield", true);
         isAttackingShield = true;
-        yield return new WaitForSeconds(1); //tempo de cast da magia
+        yield return new WaitForSeconds(newSpell.MyCastTime); //tempo de cast da magia
 
         //CastSpell ();
 
-		SpellScript s = Instantiate(newSpell., exitPoints[exitIndex].position, Quaternion.identity).GetComponent<SpellScript>();  //quaternion não deixar rotacionar
+		SpellScript s = Instantiate(newSpell.MySpellPrefab, exitPoints[exitIndex].position, Quaternion.identity).GetComponent<SpellScript>();  //quaternion não deixar rotacionar
 
         s.MyTarget = MyTarget;
 
@@ -163,5 +163,11 @@ public class Player : Character
         }
 
         blocks[exitIndex].Activate();
+    }
+
+    public override void StopAttackShield()
+    {
+        spellBook.StopCasting();
+        base.StopAttackShield();
     }
 }
