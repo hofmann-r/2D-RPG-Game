@@ -6,16 +6,16 @@ using System;
 public class LevelManager : MonoBehaviour {
 
     [SerializeField]
+    private Sprite defaultTile;
+
+    [SerializeField]
     private Transform map;
 
     [SerializeField]
     private Texture2D[] mapData;
 
     [SerializeField]
-    private MapElement[] mapElements;
-
-    [SerializeField]
-    private Sprite defaultTile;    
+    private MapElement[] mapElements; 
 
     private Vector3 WorldStartPos {
         get {
@@ -34,9 +34,14 @@ public class LevelManager : MonoBehaviour {
     }
 
     private void GenerateMap() {
+        int height = mapData[0].height;
+        int width = mapData[0].width;
         for (int i = 0; i < mapData.Length; i++) {
+
             for (int x = 0; x < mapData[i].width; x++) {
+
                 for (int y = 0; y < mapData[i].height; y++) {
+
                     Color c = mapData[i].GetPixel(x, y);
 
 
@@ -50,6 +55,10 @@ public class LevelManager : MonoBehaviour {
 
                         GameObject go = Instantiate(newElement.MyElementPrefab);
                         go.transform.position = new Vector2(xPosition, yPosition);
+
+                        if (newElement.MyTileTag == "Tree") { 
+                            go.GetComponent<SpriteRenderer>().sortingOrder = height*2 - y*2;
+                        }
                         go.transform.parent = map;
                     }
                 }
