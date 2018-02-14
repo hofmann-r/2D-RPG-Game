@@ -18,6 +18,7 @@ public abstract class Character : MonoBehaviour {
     protected Coroutine attackShieldRoutine;
 
     protected bool isAttackingShield = false;
+    protected bool isAttackingSword = false;
 
     [SerializeField]
     private float initHealth;
@@ -71,6 +72,8 @@ public abstract class Character : MonoBehaviour {
             StopAttackShield();
         } else if (isAttackingShield) {
             ActivateLayer("AttackShieldLayer");
+        } else if (isAttackingSword) {
+            ActivateLayer("AttackSwordLayer");
         } else {
             ActivateLayer("IdleLayer");
         }
@@ -82,6 +85,11 @@ public abstract class Character : MonoBehaviour {
             isAttackingShield = false;
             myAnimator.SetBool("attackShield", false);
         }
+    }
+
+    public virtual void StopAttackSword() {
+        isAttackingSword = false;
+        myAnimator.SetBool("attackSword", false);
 
     }
 

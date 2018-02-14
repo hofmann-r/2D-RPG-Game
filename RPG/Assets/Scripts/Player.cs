@@ -84,7 +84,6 @@ public class Player : Character {
         if (Input.GetKeyDown(KeyCode.K)) {
             if (mana.MyCurrentValue < mana.MyMaxValue) {
                 mana.MyCurrentValue += 10;
-
             }
         }
 
@@ -105,8 +104,11 @@ public class Player : Character {
             direction += Vector2.right;
         }
 
-        if (Input.GetKeyDown(KeyCode.Space)) {
-
+        if (Input.GetKey(KeyCode.Space)) {
+            AttackSword();
+        }
+        if (Input.GetKeyUp(KeyCode.Space)) {
+            StopAttackSword();
         }
 
     }
@@ -135,6 +137,28 @@ public class Player : Character {
 
         StopAttackShield();
     }
+
+    private void AttackSword() {
+        Transform currentTarget = MyTarget;
+
+        //Spell newSpell = spellBook.CastSpell(spellIndex);
+
+        myAnimator.SetBool("attackSword", true);
+        isAttackingSword = true;
+
+        //yield return new WaitForSeconds(1); //tempo teste
+
+        //CastSpell ();
+
+        //if (currentTarget != null && InLineOfSight()) {
+        //     SpellScript s = Instantiate(newSpell.MySpellPrefab, exitPoints[exitIndex].position, Quaternion.identity).GetComponent<SpellScript>();  //quaternion não deixar rotacionar
+        //
+        //     s.Initialize(currentTarget, newSpell.MyDamage);
+        // }
+
+       // StopAttackSword();
+    }
+
 
     public void CastSpell(int spellIndex) {
 

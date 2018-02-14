@@ -14,7 +14,7 @@ public class TreeTile : Tile {
 
 #if UNITY_EDITOR
     [MenuItem("Assets/Create/Tiles/TreeTile")]
-    public static void CreateWaterTile()
+    public static void CreateTreeTile()
     {
         string path = EditorUtility.SaveFilePanelInProject("Save TreeTile", "New TreeTile", "asset", "Save treeTile", "Assets");
         if (path == "")
