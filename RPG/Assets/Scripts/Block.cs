@@ -8,11 +8,11 @@ public class Block {
 
 	public void Deactivate() {
 		first.SetActive (false);
-		first.SetActive (false);
+		second.SetActive (false);
 	}
 
 	public void Activate() {
 		first.SetActive (true);
-		first.SetActive (true);
+		second.SetActive (true);
 	}
 }
