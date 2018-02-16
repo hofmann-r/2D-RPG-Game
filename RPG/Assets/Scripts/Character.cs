@@ -11,7 +11,7 @@ public abstract class Character : MonoBehaviour {
 
     protected Animator myAnimator;
 
-    protected Vector2 direction;
+    private Vector2 direction;
 
     private Rigidbody2D myRigidbody;
 
@@ -19,6 +19,7 @@ public abstract class Character : MonoBehaviour {
 
     protected bool isAttackingShield = false;
     protected bool isAttackingSword = false;
+    protected bool isEnemyAttacking = false;
 
     [SerializeField]
     private float initHealth;
@@ -31,15 +32,36 @@ public abstract class Character : MonoBehaviour {
 
     public Stat MyHealth {
         get {
-            return health; 
+            return health;
         }
     }
 
     public bool IsMoving {
         get {
-            return direction.x != 0 || direction.y != 0;
+            return Direction.x != 0 || Direction.y != 0;
         }
     }
+
+    public Vector2 Direction {
+        get {
+            return direction;
+        }
+
+        set {
+            direction = value;
+        }
+    }
+
+    public float Speed {
+        get {
+            return speed;
+        }
+
+        set {
+            speed = value;
+        }
+    }
+
     // Use this for initialization
     protected virtual void Start() {
 
@@ -60,20 +82,20 @@ public abstract class Character : MonoBehaviour {
     public void Move() {
         //old
         //transform.Translate (direction * speed * Time.deltaTime);
-        myRigidbody.velocity = direction.normalized * speed;
+        myRigidbody.velocity = Direction.normalized * Speed;
     }
 
     public void HandleLayers() {
         if (IsMoving) {
             ActivateLayer("WalkLayer");
-            myAnimator.SetFloat("x", direction.x);
-            myAnimator.SetFloat("y", direction.y);
-
-            StopAttackShield();
+            myAnimator.SetFloat("x", Direction.x);
+            myAnimator.SetFloat("y", Direction.y);
         } else if (isAttackingShield) {
             ActivateLayer("AttackShieldLayer");
         } else if (isAttackingSword) {
             ActivateLayer("AttackSwordLayer");
+        } else if (isEnemyAttacking) {
+            ActivateLayer("AttackEnemyLayer");
         } else {
             ActivateLayer("IdleLayer");
         }
@@ -103,7 +125,7 @@ public abstract class Character : MonoBehaviour {
     public virtual void TakeDamage(int damage) {
         health.MyCurrentValue -= damage;
 
-        if(health.MyCurrentValue <= 0) {
+        if (health.MyCurrentValue <= 0) {
             myAnimator.SetTrigger("die");
         }
     }

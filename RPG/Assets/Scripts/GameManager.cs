@@ -41,10 +41,12 @@ public class GameManager : MonoBehaviour {
 
                 currentTarget = hit.collider.GetComponent<NPC>(); //seleciona o alvo
 
-                player.MyTarget = currentTarget.Select(); //diz ao player qual o alvo
 
+                if (currentTarget != null) {
+                    player.MyTarget = currentTarget.Select(); //diz ao player qual o alvo
+                    UIManager.MyInstance.ShowTargetFrame(currentTarget);
+                }
 
-                UIManager.MyInstance.ShowTargetFrame(currentTarget);
 
 
             } else {

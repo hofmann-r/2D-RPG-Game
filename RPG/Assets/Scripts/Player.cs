@@ -28,6 +28,8 @@ public class Player : Character
 	[SerializeField]
 	private BoxCollider2D[] swordBoxCollider;
 
+    private float swordAttackRange;
+
 
 
 	//private Transform target;
@@ -38,10 +40,12 @@ public class Player : Character
 
 	protected override void Start ()
 	{
-		//inimigo fixo
-		//target = GameObject.Find ("Target").transform;
+        //inimigo fixo
+        //target = GameObject.Find ("Target").transform;
 
-		spellBook = GetComponent<SpellBook> ();
+        swordAttackRange = 1.5f;
+
+        spellBook = GetComponent<SpellBook> ();
         
 
 		mana.Initialize (manaValue, maxMana);
@@ -64,7 +68,7 @@ public class Player : Character
 
 	private void GetInput ()
 	{
-		direction = Vector2.zero;
+		Direction = Vector2.zero;
 
 
 		//DEBUG DA HEALTH DO CHAR
@@ -96,19 +100,19 @@ public class Player : Character
 
 		if (Input.GetKey (KeyCode.W)) {
 			exitIndex = 0;
-			direction += Vector2.up;
+			Direction += Vector2.up;
 		}
 		if (Input.GetKey (KeyCode.A)) {
 			exitIndex = 3;
-			direction += Vector2.left;
+			Direction += Vector2.left;
 		}
 		if (Input.GetKey (KeyCode.S)) {
 			exitIndex = 2;
-			direction += Vector2.down;
+			Direction += Vector2.down;
 		}
 		if (Input.GetKey (KeyCode.D)) {
 			exitIndex = 1;
-			direction += Vector2.right;
+			Direction += Vector2.right;
 		}
 
 		if (Input.GetKey (KeyCode.Space)) {
@@ -119,6 +123,10 @@ public class Player : Character
 		if (Input.GetKeyUp (KeyCode.Space)) {
 			StopAttackSword ();
 		}
+
+        if(IsMoving) {
+            StopAttackShield();
+        }
 
 	}
 
@@ -158,14 +166,18 @@ public class Player : Character
 		myAnimator.SetBool ("attackSword", true);
 		isAttackingSword = true;
 
+        float distance = Vector2.Distance(MyTarget.position, transform.position);
 
+        if (distance <= swordAttackRange && InLineOfSight()) {
+            Debug.Log("Tirando vida do inimigo");
+        }
 
-		//yield return new WaitForSeconds(1); //tempo teste
+        //yield return new WaitForSeconds(1); //tempo teste
 
-		//CastSpell ();
+        //CastSpell ();
 
-		// StopAttackSword();
-	}
+        // StopAttackSword();
+    }
 
 
 	public void CastSpell (int spellIndex)

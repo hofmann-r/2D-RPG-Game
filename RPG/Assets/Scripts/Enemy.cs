@@ -7,6 +7,33 @@ public class Enemy : NPC {
     [SerializeField]
     private CanvasGroup healthGroup;
 
+    private Transform target;
+
+    private IState currentState;
+
+    public float MyAttackRange { get; set; }
+
+    public Transform Target {
+        get {
+            return target;
+        }
+
+        set {
+            target = value;
+        }
+    }
+
+    protected void Awake() {
+        MyAttackRange = 1;
+        ChangeState(new IdleState());
+    }
+
+    protected override void Update() {
+        currentState.Update();
+        transform.rotation = Quaternion.identity;
+        base.Update();
+    }
+
     public override Transform Select() {
 
         healthGroup.alpha = 1;
@@ -25,7 +52,15 @@ public class Enemy : NPC {
         base.TakeDamage(damage);
 
         OnHealthChanged(health.MyCurrentValue);
-        
+
     }
 
+    public void ChangeState(IState newState) {
+        if(currentState != null) {
+            currentState.Exit();
+        }
+        currentState = newState;
+
+        currentState.Enter(this);
+    }
 }
