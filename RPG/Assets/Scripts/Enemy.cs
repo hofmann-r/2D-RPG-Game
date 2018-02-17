@@ -13,6 +13,8 @@ public class Enemy : NPC {
 
     public float MyAttackRange { get; set; }
 
+    public float MyAttacktime { get; set; }
+
     public Transform Target {
         get {
             return target;
@@ -24,13 +26,20 @@ public class Enemy : NPC {
     }
 
     protected void Awake() {
-        MyAttackRange = 1;
+        MyAttackRange = 1.5f;
         ChangeState(new IdleState());
     }
 
     protected override void Update() {
-        currentState.Update();
         transform.rotation = Quaternion.identity;
+        if (IsAlive) {
+
+            if (!IsEnemyAttacking) {
+                MyAttacktime += Time.deltaTime;
+            }
+
+            currentState.Update();
+        }
         base.Update();
     }
 
@@ -56,7 +65,7 @@ public class Enemy : NPC {
     }
 
     public void ChangeState(IState newState) {
-        if(currentState != null) {
+        if (currentState != null) {
             currentState.Exit();
         }
         currentState = newState;

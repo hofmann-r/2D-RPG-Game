@@ -9,7 +9,7 @@ public abstract class Character : MonoBehaviour {
     [SerializeField]
     private float speed;
 
-    protected Animator myAnimator;
+    public Animator MyAnimator { get; set; }
 
     private Vector2 direction;
 
@@ -19,7 +19,8 @@ public abstract class Character : MonoBehaviour {
 
     protected bool isAttackingShield = false;
     protected bool isAttackingSword = false;
-    protected bool isEnemyAttacking = false;
+
+    public bool IsEnemyAttacking { get; set; }
 
     [SerializeField]
     private float initHealth;
@@ -62,12 +63,18 @@ public abstract class Character : MonoBehaviour {
         }
     }
 
+    public bool IsAlive {
+        get {
+            return health.MyCurrentValue > 0;
+        }
+    }
+
     // Use this for initialization
     protected virtual void Start() {
 
         health.Initialize(initHealth, initHealth);
 
-        myAnimator = GetComponent<Animator>();
+        MyAnimator = GetComponent<Animator>();
         myRigidbody = GetComponent<Rigidbody2D>();
     }
 
@@ -82,22 +89,29 @@ public abstract class Character : MonoBehaviour {
     public void Move() {
         //old
         //transform.Translate (direction * speed * Time.deltaTime);
-        myRigidbody.velocity = Direction.normalized * Speed;
+        if (IsAlive) {
+            myRigidbody.velocity = Direction.normalized * Speed;
+
+        }
     }
 
     public void HandleLayers() {
-        if (IsMoving) {
-            ActivateLayer("WalkLayer");
-            myAnimator.SetFloat("x", Direction.x);
-            myAnimator.SetFloat("y", Direction.y);
-        } else if (isAttackingShield) {
-            ActivateLayer("AttackShieldLayer");
-        } else if (isAttackingSword) {
-            ActivateLayer("AttackSwordLayer");
-        } else if (isEnemyAttacking) {
-            ActivateLayer("AttackEnemyLayer");
+        if (IsAlive) {
+            if (IsMoving) {
+                ActivateLayer("WalkLayer");
+                MyAnimator.SetFloat("x", Direction.x);
+                MyAnimator.SetFloat("y", Direction.y);
+            } else if (isAttackingShield) {
+                ActivateLayer("AttackShieldLayer");
+            } else if (isAttackingSword) {
+                ActivateLayer("AttackSwordLayer");
+            } else if (IsEnemyAttacking) {
+                ActivateLayer("AttackEnemyLayer");
+            } else {
+                ActivateLayer("IdleLayer");
+            }
         } else {
-            ActivateLayer("IdleLayer");
+            ActivateLayer("DeathLayer");
         }
     }
 
@@ -105,28 +119,30 @@ public abstract class Character : MonoBehaviour {
         if (attackShieldRoutine != null) {
             StopCoroutine(attackShieldRoutine);
             isAttackingShield = false;
-            myAnimator.SetBool("attackShield", false);
+            MyAnimator.SetBool("attackShield", false);
         }
     }
 
     public virtual void StopAttackSword() {
         isAttackingSword = false;
-        myAnimator.SetBool("attackSword", false);
+        MyAnimator.SetBool("attackSword", false);
 
     }
 
     public void ActivateLayer(string layerName) {
-        for (int i = 0; i < myAnimator.layerCount; i++) {
-            myAnimator.SetLayerWeight(i, 0);
+        for (int i = 0; i < MyAnimator.layerCount; i++) {
+            MyAnimator.SetLayerWeight(i, 0);
         }
-        myAnimator.SetLayerWeight(myAnimator.GetLayerIndex(layerName), 1);
+        MyAnimator.SetLayerWeight(MyAnimator.GetLayerIndex(layerName), 1);
     }
 
     public virtual void TakeDamage(int damage) {
         health.MyCurrentValue -= damage;
 
         if (health.MyCurrentValue <= 0) {
-            myAnimator.SetTrigger("die");
+            Direction = Vector2.zero;
+            myRigidbody.velocity = Direction;
+            MyAnimator.SetTrigger("die");
         }
     }
 

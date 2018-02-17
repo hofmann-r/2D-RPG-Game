@@ -142,7 +142,7 @@ public class Player : Character
 
 		Spell newSpell = spellBook.CastSpell (spellIndex);
 
-		myAnimator.SetBool ("attackShield", true);
+		MyAnimator.SetBool ("attackShield", true);
 		isAttackingShield = true;
 		yield return new WaitForSeconds (newSpell.MyCastTime); //tempo de cast da magia
 
@@ -163,7 +163,7 @@ public class Player : Character
 
 		//Spell newSpell = spellBook.CastSpell(spellIndex);
 
-		myAnimator.SetBool ("attackSword", true);
+		MyAnimator.SetBool ("attackSword", true);
 		isAttackingSword = true;
 
         float distance = Vector2.Distance(MyTarget.position, transform.position);

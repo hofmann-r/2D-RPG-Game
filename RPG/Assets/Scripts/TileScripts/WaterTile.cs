@@ -19,7 +19,7 @@ public class WaterTile : Tile
 
     //gerar collider para a agua
     public override bool StartUp(Vector3Int position, ITilemap tilemap, GameObject go) {
-        return base.StartUp(position, tilemap, go);
+        return base.StartUp(position, tilemap, go); 
     }
 
     /// <summary>
