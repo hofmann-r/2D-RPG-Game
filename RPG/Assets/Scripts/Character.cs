@@ -128,7 +128,6 @@ public abstract class Character : MonoBehaviour {
     public virtual void StopAttackSword() {
         isAttackingSword = false;
         MyAnimator.SetBool("attackSword", false);
-
     }
 
     public void ActivateLayer(string layerName) {
@@ -138,7 +137,7 @@ public abstract class Character : MonoBehaviour {
         MyAnimator.SetLayerWeight(MyAnimator.GetLayerIndex(layerName), 1);
     }
 
-    public virtual void TakeDamage(int damage, Transform source) {
+    public virtual void TakeDamage(float damage, Transform source) {
 
         health.MyCurrentValue -= damage;
 

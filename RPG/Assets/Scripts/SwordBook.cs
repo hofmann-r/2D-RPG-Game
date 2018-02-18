@@ -6,15 +6,18 @@ public class SwordBook : MonoBehaviour {
 
     [SerializeField]
     private Swords[] swords;
+    private int equipedSword = 0;
 
+    private Swords equiped;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    private void Start() {
+        equiped = swords[equipedSword];
+    }
+    public Swords GetEquipedSword() {
+        return equiped;
+    }
+
+    public void SetEquipedSword(int e) {
+        equiped = swords[e];
+    }
 }

@@ -241,6 +241,7 @@
     <Compile Include="Assets\Scripts\SpellBook.cs" />
     <Compile Include="Assets\Scripts\SpellScript.cs" />
     <Compile Include="Assets\Scripts\Stat.cs" />
+    <Compile Include="Assets\Scripts\SwordAttackEnter.cs" />
     <Compile Include="Assets\Scripts\SwordBook.cs" />
     <Compile Include="Assets\Scripts\Swords.cs" />
     <Compile Include="Assets\Scripts\TileScripts\TreeTile.cs" />

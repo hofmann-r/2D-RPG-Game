@@ -64,7 +64,7 @@ public class Enemy : NPC {
         base.DeSelect();
     }
 
-    public override void TakeDamage(int damage, Transform source) {
+    public override void TakeDamage(float damage, Transform source) {
 
         if (!(currentState is EvadeState)) {
 

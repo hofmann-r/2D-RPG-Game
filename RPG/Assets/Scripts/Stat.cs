@@ -35,7 +35,7 @@ public class Stat : MonoBehaviour {
             currentFill = currentValue / MyMaxValue;
 
             if (statValuetext != null) {
-                statValuetext.text = currentValue + "/" + MyMaxValue;
+                statValuetext.text = currentValue.ToString("F0") + "/" + MyMaxValue;
             }
 
         }
