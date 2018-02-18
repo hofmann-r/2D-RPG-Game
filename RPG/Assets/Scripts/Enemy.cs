@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,26 +8,32 @@ public class Enemy : NPC {
     [SerializeField]
     private CanvasGroup healthGroup;
 
-    private Transform target;
-
     private IState currentState;
 
     public float MyAttackRange { get; set; }
 
     public float MyAttacktime { get; set; }
 
-    public Transform Target {
-        get {
-            return target;
-        }
+    public Vector3 MyStartPosition { get; set; }
 
-        set {
-            target = value;
+    public float MyAggroRange { get; set; }
+
+    public bool InRange {
+        get {
+            return Vector2.Distance(transform.position, MyTarget.position) < MyAggroRange;
         }
     }
 
+    [SerializeField]
+    private float initAggroRange;
+
     protected void Awake() {
+        MyAggroRange = initAggroRange;
+
+        MyStartPosition = transform.position;
+
         MyAttackRange = 1.5f;
+
         ChangeState(new IdleState());
     }
 
@@ -57,10 +64,15 @@ public class Enemy : NPC {
         base.DeSelect();
     }
 
-    public override void TakeDamage(int damage) {
-        base.TakeDamage(damage);
+    public override void TakeDamage(int damage, Transform source) {
 
-        OnHealthChanged(health.MyCurrentValue);
+        if (!(currentState is EvadeState)) {
+
+            SetTarget(source);
+            base.TakeDamage(damage, source);
+
+            OnHealthChanged(health.MyCurrentValue);
+        }
 
     }
 
@@ -72,4 +84,24 @@ public class Enemy : NPC {
 
         currentState.Enter(this);
     }
+
+    public void SetTarget(Transform target) {
+        if (MyTarget == null && !(currentState is EvadeState)) {
+            float distance = Vector2.Distance(transform.position, target.position);
+
+            MyAggroRange = initAggroRange;
+
+            MyAggroRange += distance;
+
+            MyTarget = target;
+        }
+    }
+
+    public void Reset() {
+        this.MyTarget = null;
+        this.MyAggroRange = initAggroRange;
+        this.MyHealth.MyCurrentValue = this.MyHealth.MyMaxValue;
+        OnHealthChanged(health.MyCurrentValue);
+    }
+
 }

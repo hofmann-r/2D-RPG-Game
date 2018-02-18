@@ -13,6 +13,9 @@ public class SpellScript : MonoBehaviour
     private int damage;
 
     public Transform MyTarget { get; private set; }
+
+    private Transform source;
+
 	// Use this for initialization
 	void Start ()
 	{
@@ -32,9 +35,10 @@ public class SpellScript : MonoBehaviour
 		
 	}
 
-    public void Initialize(Transform target, int damage) {
+    public void Initialize(Transform target, int damage, Transform source) {
         this.MyTarget = target;
         this.damage = damage;
+        this.source = source;
     }
 
     private void FixedUpdate()
@@ -53,8 +57,9 @@ public class SpellScript : MonoBehaviour
     {
         if (collision.tag == "HitBox" && collision.transform == MyTarget) {
 
+            Character c = collision.GetComponentInParent<Character>();
             speed = 0;
-            collision.GetComponentInParent<Enemy>().TakeDamage(damage);
+            c.TakeDamage(damage, source);
             GetComponent<Animator>().SetTrigger("impact");
             myRigidBody.velocity = Vector2.zero;
             MyTarget = null;

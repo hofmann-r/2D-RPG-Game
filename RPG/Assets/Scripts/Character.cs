@@ -15,6 +15,8 @@ public abstract class Character : MonoBehaviour {
 
     private Rigidbody2D myRigidbody;
 
+    public Transform MyTarget { get; set; }
+
     protected Coroutine attackShieldRoutine;
 
     protected bool isAttackingShield = false;
@@ -136,7 +138,8 @@ public abstract class Character : MonoBehaviour {
         MyAnimator.SetLayerWeight(MyAnimator.GetLayerIndex(layerName), 1);
     }
 
-    public virtual void TakeDamage(int damage) {
+    public virtual void TakeDamage(int damage, Transform source) {
+
         health.MyCurrentValue -= damage;
 
         if (health.MyCurrentValue <= 0) {

@@ -26,9 +26,9 @@ class AttackState : IState {
             parent.StartCoroutine(Attack());
         }
 
-        if(parent.Target != null) {
+        if(parent.MyTarget != null) {
             //testar alcance e atacar
-            float distance = Vector2.Distance(parent.Target.position, parent.transform.position);
+            float distance = Vector2.Distance(parent.MyTarget.position, parent.transform.position);
 
             if (distance >= parent.MyAttackRange+extraRange && !parent.IsEnemyAttacking) {
                 parent.ChangeState(new FollowState());

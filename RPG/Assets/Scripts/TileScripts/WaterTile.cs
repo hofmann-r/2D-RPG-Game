@@ -19,7 +19,7 @@ public class WaterTile : Tile
 
     //gerar collider para a agua
     public override bool StartUp(Vector3Int position, ITilemap tilemap, GameObject go) {
-        return base.StartUp(position, tilemap, go); 
+        return base.StartUp(position, tilemap, go);
     }
 
     /// <summary>
@@ -52,6 +52,8 @@ public class WaterTile : Tile
     /// <param name="tileData">A reference to the actual object, that this tile belongs to</param>
     public override void GetTileData(Vector3Int location, ITilemap tilemap, ref TileData tileData)
     {
+        base.GetTileData(location, tilemap, ref tileData);
+
         string composition = string.Empty;//Makes an empty string as compostion, we need this so that we change the sprite
 
         for (int x = -1; x <= 1; x++)//Runs through all neighbours 

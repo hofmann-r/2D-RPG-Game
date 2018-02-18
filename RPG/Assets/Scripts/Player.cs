@@ -34,9 +34,6 @@ public class Player : Character
 
 	//private Transform target;
 
-	public Transform MyTarget { get; set; }
-
-
 
 	protected override void Start ()
 	{
@@ -151,7 +148,7 @@ public class Player : Character
 		if (currentTarget != null && InLineOfSight ()) {
 			SpellScript s = Instantiate (newSpell.MySpellPrefab, exitPoints [exitIndex].position, Quaternion.identity).GetComponent<SpellScript> ();  //quaternion não deixar rotacionar
 
-			s.Initialize (currentTarget, newSpell.MyDamage);
+			s.Initialize (currentTarget, newSpell.MyDamage, transform);
 		}
 
 		StopAttackShield ();
@@ -185,7 +182,7 @@ public class Player : Character
 
 		Block ();
 
-		if (MyTarget != null && !isAttackingShield && !IsMoving && InLineOfSight ()) {
+		if (MyTarget != null && MyTarget.GetComponentInParent<Character>().IsAlive && !isAttackingShield && !IsMoving && InLineOfSight ()) {
 			attackShieldRoutine = StartCoroutine (AttackShield (spellIndex));
 		}
 

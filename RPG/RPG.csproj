@@ -226,6 +226,7 @@
     <Compile Include="Assets\Scripts\Character.cs" />
     <Compile Include="Assets\Scripts\Enemy.cs" />
     <Compile Include="Assets\Scripts\EnemyStates\AttackState.cs" />
+    <Compile Include="Assets\Scripts\EnemyStates\EvadeState.cs" />
     <Compile Include="Assets\Scripts\EnemyStates\FollowState.cs" />
     <Compile Include="Assets\Scripts\EnemyStates\IdleState.cs" />
     <Compile Include="Assets\Scripts\EnemyStates\IState.cs" />
