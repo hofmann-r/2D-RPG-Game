@@ -20,7 +20,8 @@ public abstract class Character : MonoBehaviour {
     protected Coroutine attackShieldRoutine;
 
     protected bool isAttackingShield = false;
-    protected bool isAttackingSword = false;
+
+	public bool isAttackingSword;
 
     public bool IsEnemyAttacking { get; set; }
 

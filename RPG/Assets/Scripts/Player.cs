@@ -129,7 +129,7 @@ public class Player : Character {
             }
         }
         if (Input.GetKeyUp(KeyCode.Space)) {
-            StopAttackSword();
+          //  StopAttackSword();
             if (enemyAttackCollider != null) {
                 enemyAttackCollider.SetActive(false);
             }
