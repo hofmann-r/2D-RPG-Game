@@ -33,6 +33,8 @@ public class Player : Character {
     [SerializeField]
     private GameObject enemyAttackCollider;
 
+    private SwordAttackEnter swordAttackEnter;
+
     public SwordBook MySwordBook {
         get {
             return swordBook;
@@ -57,8 +59,6 @@ public class Player : Character {
         swordBook = GetComponent<SwordBook>();
 
         mana.Initialize(manaValue, maxMana);
-
-
 
         base.Start();
     }
@@ -121,22 +121,29 @@ public class Player : Character {
             Direction += Vector2.right;
         }
 
-        if (Input.GetKey(KeyCode.Space)) {
+        if (Input.GetKeyDown(KeyCode.Space)) {
             if (MyTarget != null && !isAttackingSword && !IsMoving) {
                 AttackSword();
                 enemyAttackCollider.SetActive(true);
-
+                if (swordAttackEnter != null) {
+                    swordAttackEnter.atacando = true;
+                }
             }
         }
         if (Input.GetKeyUp(KeyCode.Space)) {
-          //  StopAttackSword();
             if (enemyAttackCollider != null) {
                 enemyAttackCollider.SetActive(false);
+            }
+            if (swordAttackEnter != null && swordAttackEnter.attackTimeCounter <= 0) {
+                StopAttackSword();
+                swordAttackEnter.atacando = false;
+                swordAttackEnter.attackTimeCounter = swordAttackEnter.attackTime;
             }
         }
 
         if (IsMoving) {
             StopAttackShield();
+            StopAttackSword();
         }
 
     }
@@ -179,11 +186,11 @@ public class Player : Character {
         MyAnimator.SetBool("attackSword", true);
         isAttackingSword = true;
 
-        float distance = Vector2.Distance(MyTarget.position, transform.position);
+       // float distance = Vector2.Distance(MyTarget.position, transform.position);
 
-        if (distance <= swordAttackRange && InLineOfSight()) {
-            Debug.Log("Tirando vida do inimigo");
-        }
+       // if (distance <= swordAttackRange && InLineOfSight()) {
+       //     Debug.Log("Tirando vida do inimigo");
+       // }
 
         ActivateAttackSword(exitIndex);
 
@@ -232,11 +239,14 @@ public class Player : Character {
     }
 
     public void ActivateAttackSword(int index) {
-        //DeactivateAttackSword();
         swordBoxCollider[index].SetActive(true);
+        swordAttackEnter = swordBoxCollider[index].GetComponent<SwordAttackEnter>();
     }
 
     public void DeactivateAttackSword() {
+        if (swordAttackEnter != null) {
+            swordAttackEnter.atacando = false;
+        }
         for (int i = 0; i < swordBoxCollider.Length; i++) {
             swordBoxCollider[i].SetActive(false);
         }
