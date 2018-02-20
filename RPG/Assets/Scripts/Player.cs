@@ -210,6 +210,8 @@ public class Player : Character {
             attackShieldRoutine = StartCoroutine(AttackShield(spellIndex));
         }
 
+		StopBlock ();
+
     }
 
     private bool InLineOfSight() {
@@ -225,10 +227,14 @@ public class Player : Character {
         return false;
     }
 
+	private void StopBlock() {
+		foreach (Block block in blocks) {
+			block.Deactivate();
+		}
+	}
+
     private void Block() {
-        foreach (Block block in blocks) {
-            block.Deactivate();
-        }
+		StopBlock ();
 
         blocks[exitIndex].Activate();
     }

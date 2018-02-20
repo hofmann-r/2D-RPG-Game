@@ -28,6 +28,9 @@ public class UIManager : MonoBehaviour {
     [SerializeField]
     private Image portraitFrame;
 
+	[SerializeField]
+	private CanvasGroup keybindMenu;
+
     private KeyCode action1, action2, action3;
     // Use this for initialization
     void Start() {
@@ -49,6 +52,9 @@ public class UIManager : MonoBehaviour {
         if (Input.GetKeyDown(action3)) {
             ActionButtonOnClick(2);
         }
+		if (Input.GetKeyDown(KeyCode.Escape)) {
+			OpenCloseMenu ();
+		}
     }
 
     private void ActionButtonOnClick(int btnIndex) {
@@ -74,4 +80,10 @@ public class UIManager : MonoBehaviour {
     public void UpdateTargetFrame(float health) {
         healthStat.MyCurrentValue = health;
     }
+
+	public void OpenCloseMenu() {
+		keybindMenu.alpha = (keybindMenu.alpha > 0) ? 0 : 1;
+		keybindMenu.blocksRaycasts = (keybindMenu.blocksRaycasts == true) ? false : true;
+		Time.timeScale = (Time.timeScale > 0) ? 0 : 1; //pausar o jogo
+	}
 }
