@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System; 
 
 public class UIManager : MonoBehaviour {
 
@@ -31,11 +32,16 @@ public class UIManager : MonoBehaviour {
 	[SerializeField]
 	private CanvasGroup keybindMenu;
 
+	private GameObject[] keybindButtons;
+
+	private void Awake() {
+		keybindButtons = GameObject.FindGameObjectsWithTag ("keybind");
+	}
+
     private KeyCode action1, action2, action3;
     // Use this for initialization
     void Start() {
         healthStat = targetFrame.GetComponentInChildren<Stat>();
-
         action1 = KeyCode.Alpha1;
         action2 = KeyCode.Alpha2;
         action3 = KeyCode.Alpha3;
@@ -85,5 +91,10 @@ public class UIManager : MonoBehaviour {
 		keybindMenu.alpha = (keybindMenu.alpha > 0) ? 0 : 1;
 		keybindMenu.blocksRaycasts = (keybindMenu.blocksRaycasts == true) ? false : true;
 		Time.timeScale = (Time.timeScale > 0) ? 0 : 1; //pausar o jogo
+	}
+
+	public void UpdateKeyText(string key, KeyCode code){
+		Text tmp = Array.Find (keybindButtons, x => x.name == key).GetComponentInChildren<Text>();
+		tmp.text = code.ToString ();
 	}
 }

@@ -8,6 +8,7 @@ TagManager:
   - HitBox
   - Obstacle
   - SwordAttack
+  - keybind
   layers:
   - Default
   - TransparentFX
