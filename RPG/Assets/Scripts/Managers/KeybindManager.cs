@@ -44,10 +44,10 @@ public class KeybindManager : MonoBehaviour
 	
 	public void BindKey(string key, KeyCode keybind){
 		Dictionary<string, KeyCode> currentDictionary = Keybinds;
-		if (key.Contains ("ACT") || key.Contains ("SWRD")) { //if key contain action button
+		if (key.Contains ("ACT")) { //if key contain action button
 			currentDictionary = Actionbinds;
 		} 
-		if (!currentDictionary.ContainsValue (keybind)) {
+		if (!currentDictionary.ContainsKey (key)) {
 			currentDictionary.Add (key, keybind);
 			UIManager.MyInstance.UpdateKeyText (key, keybind); //redundante
 		} else if (currentDictionary.ContainsValue (keybind)) {
@@ -61,4 +61,20 @@ public class KeybindManager : MonoBehaviour
 		bindName = string.Empty;
 		UIManager.MyInstance.UpdateKeyText (key, keybind);
 	}
+
+    public void KeyBindOnClick(string bindName) {
+        this.bindName = bindName;
+    }
+
+    private void OnGUI() {
+        if(bindName != string.Empty) {
+            Event e = Event.current;
+
+            if (e.isKey) {
+                BindKey(bindName, e.keyCode);
+            }
+        }
+
+        
+    }
 }

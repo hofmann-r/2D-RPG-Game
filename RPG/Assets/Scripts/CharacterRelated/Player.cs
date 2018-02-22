@@ -19,8 +19,6 @@ public class Player : Character {
 
     private int exitIndex = 2;
 
-    private SpellBook spellBook;
-
     private SwordBook swordBook;
 
     private Vector3 min, max;
@@ -45,6 +43,18 @@ public class Player : Character {
         }
     }
 
+    private static Player instance;
+
+    public static Player MyInstance {
+        get {
+            if (instance == null) {
+                instance = FindObjectOfType<Player>();
+            }
+
+            return instance;
+        }
+    }
+
     //private Transform target;
 
 
@@ -53,8 +63,6 @@ public class Player : Character {
         //target = GameObject.Find ("Target").transform;
 
         swordAttackRange = 1.5f;
-
-        spellBook = GetComponent<SpellBook>();
 
         swordBook = GetComponent<SwordBook>();
 
@@ -104,24 +112,24 @@ public class Player : Character {
             }
         }
 
-        if (Input.GetKey(KeyCode.W)) {
+        if (Input.GetKey(KeybindManager.MyInstance.Keybinds["UP"])) {
             exitIndex = 0;
             Direction += Vector2.up;
         }
-        if (Input.GetKey(KeyCode.A)) {
+        if (Input.GetKey(KeybindManager.MyInstance.Keybinds["LEFT"])) {
             exitIndex = 3;
             Direction += Vector2.left;
         }
-        if (Input.GetKey(KeyCode.S)) {
+        if (Input.GetKey(KeybindManager.MyInstance.Keybinds["DOWN"])) {
             exitIndex = 2;
             Direction += Vector2.down;
         }
-        if (Input.GetKey(KeyCode.D)) {
+        if (Input.GetKey(KeybindManager.MyInstance.Keybinds["RIGHT"])) {
             exitIndex = 1;
             Direction += Vector2.right;
         }
 
-        if (Input.GetKeyDown(KeyCode.Space)) {
+        if (Input.GetKeyDown(KeybindManager.MyInstance.Keybinds["SWRD"])) {
             if (MyTarget != null && !isAttackingSword && !IsMoving) {
                 AttackSword();
                 enemyAttackCollider.SetActive(true);
@@ -130,20 +138,26 @@ public class Player : Character {
                 }
             }
         }
-        if (Input.GetKeyUp(KeyCode.Space)) {
+        if (Input.GetKeyUp(KeybindManager.MyInstance.Keybinds["SWRD"])) {
             if (enemyAttackCollider != null) {
                 enemyAttackCollider.SetActive(false);
             }
             if (swordAttackEnter != null && swordAttackEnter.attackTimeCounter <= 0) {
                 StopAttackSword();
                 swordAttackEnter.atacando = false;
-                swordAttackEnter.attackTimeCounter = swordAttackEnter.attackTime;
+                swordAttackEnter.attackTimeCounter = 0.4f;
             }
         }
 
         if (IsMoving) {
             StopAttackShield();
             StopAttackSword();
+        }
+
+        foreach(string action in KeybindManager.MyInstance.Actionbinds.Keys) {
+            if (Input.GetKeyDown(KeybindManager.MyInstance.Actionbinds[action])) {
+                UIManager.MyInstance.ClickActionButton(action );
+            }
         }
 
     }
@@ -158,10 +172,10 @@ public class Player : Character {
         base.StopAttackSword();
     }
 
-    private IEnumerator AttackShield(int spellIndex) {
+    private IEnumerator AttackShield(string spellName) {
         Transform currentTarget = MyTarget;
 
-        Spell newSpell = spellBook.CastSpell(spellIndex);
+        Spell newSpell = SpellBook.MyInstance.CastSpell(spellName);
 
         MyAnimator.SetBool("attackShield", true);
         isAttackingShield = true;
@@ -202,12 +216,12 @@ public class Player : Character {
     }
 
 
-    public void CastSpell(int spellIndex) {
+    public void CastSpell(string spellName) {
 
         Block();
 
         if (MyTarget != null && MyTarget.GetComponentInParent<Character>().IsAlive && !isAttackingShield && !IsMoving && InLineOfSight()) {
-            attackShieldRoutine = StartCoroutine(AttackShield(spellIndex));
+            attackShieldRoutine = StartCoroutine(AttackShield(spellName));
         }
 
 		StopBlock ();
@@ -240,7 +254,7 @@ public class Player : Character {
     }
 
     public override void StopAttackShield() {
-        spellBook.StopCasting();
+        SpellBook.MyInstance.StopCasting();
         base.StopAttackShield();
     }
 

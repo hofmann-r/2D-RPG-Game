@@ -19,7 +19,7 @@ public class UIManager : MonoBehaviour {
     }
 
     [SerializeField]
-    private Button[] actionButtons;
+    private ActionButton[] actionButtons;
 
     [SerializeField]
     private GameObject targetFrame;
@@ -32,39 +32,32 @@ public class UIManager : MonoBehaviour {
 	[SerializeField]
 	private CanvasGroup keybindMenu;
 
-	private GameObject[] keybindButtons;
+    [SerializeField]
+    private CanvasGroup spellBookMenu;
+
+    private GameObject[] keybindButtons;
 
 	private void Awake() {
 		keybindButtons = GameObject.FindGameObjectsWithTag ("keybind");
 	}
 
-    private KeyCode action1, action2, action3;
     // Use this for initialization
     void Start() {
         healthStat = targetFrame.GetComponentInChildren<Stat>();
-        action1 = KeyCode.Alpha1;
-        action2 = KeyCode.Alpha2;
-        action3 = KeyCode.Alpha3;
+        SetUsable(actionButtons[0], SpellBook.MyInstance.GetSpell("Flame Strike"));
+        SetUsable(actionButtons[1], SpellBook.MyInstance.GetSpell("Frost Bite"));
+        SetUsable(actionButtons[2], SpellBook.MyInstance.GetSpell("Flash"));
     }
 
     // Update is called once per frame
     void Update() {
-        if (Input.GetKeyDown(action1)) {
-            ActionButtonOnClick(0);
-        }
-        if (Input.GetKeyDown(action2)) {
-            ActionButtonOnClick(1);
-        }
-        if (Input.GetKeyDown(action3)) {
-            ActionButtonOnClick(2);
-        }
 		if (Input.GetKeyDown(KeyCode.Escape)) {
-			OpenCloseMenu ();
+			OpenClose(keybindMenu);
 		}
-    }
+        if (Input.GetKeyDown(KeyCode.M)) {
+            OpenClose(spellBookMenu);
+        }
 
-    private void ActionButtonOnClick(int btnIndex) {
-        actionButtons[btnIndex].onClick.Invoke();
     }
 
     public void ShowTargetFrame(NPC target) {
@@ -87,14 +80,25 @@ public class UIManager : MonoBehaviour {
         healthStat.MyCurrentValue = health;
     }
 
-	public void OpenCloseMenu() {
-		keybindMenu.alpha = (keybindMenu.alpha > 0) ? 0 : 1;
-		keybindMenu.blocksRaycasts = (keybindMenu.blocksRaycasts == true) ? false : true;
-		Time.timeScale = (Time.timeScale > 0) ? 0 : 1; //pausar o jogo
-	}
-
 	public void UpdateKeyText(string key, KeyCode code){
 		Text tmp = Array.Find (keybindButtons, x => x.name == key).GetComponentInChildren<Text>();
 		tmp.text = code.ToString ();
 	}
+
+    public void ClickActionButton(string buttonName) {
+        Array.Find(actionButtons, x => x.gameObject.name == buttonName).MyButton.onClick.Invoke();
+
+    }
+
+    public void SetUsable(ActionButton btn, IUsable usable) {
+        btn.MyIcon.sprite = usable.MyIcon;
+        btn.MyIcon.color = Color.white;
+        btn.MyUsable = usable;
+    }
+
+    public void OpenClose(CanvasGroup canvasGroup) {
+        canvasGroup.alpha = (canvasGroup.alpha > 0) ? 0 : 1;
+        canvasGroup.blocksRaycasts = (canvasGroup.blocksRaycasts == true) ? false : true;
+        Time.timeScale = (Time.timeScale > 0) ? 0 : 1; //pausar o jogo
+    }
 }
