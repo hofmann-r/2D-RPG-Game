@@ -55,6 +55,36 @@ public class Player : Character {
         }
     }
 
+    public float MyManaValue {
+        get {
+            return manaValue;
+        }
+
+        set {
+            manaValue = value;
+        }
+    }
+
+    public float MyMaxMana {
+        get {
+            return maxMana;
+        }
+
+        set {
+            maxMana = value;
+        }
+    }
+
+    public Stat MyMana {
+        get {
+            return mana;
+        }
+
+        set {
+            mana = value;
+        }
+    }
+
     //private Transform target;
 
 
@@ -66,7 +96,7 @@ public class Player : Character {
 
         swordBook = GetComponent<SwordBook>();
 
-        mana.Initialize(manaValue, maxMana);
+        MyMana.Initialize(MyManaValue, MyMaxMana);
 
         base.Start();
     }
@@ -101,14 +131,14 @@ public class Player : Character {
 
         //DEBUG DA MANA DO CHAR
         if (Input.GetKeyDown(KeyCode.J)) {
-            if (mana.MyCurrentValue > 0) {
-                mana.MyCurrentValue -= 10;
+            if (MyMana.MyCurrentValue > 0) {
+                MyMana.MyCurrentValue -= 10;
             }
 
         }
         if (Input.GetKeyDown(KeyCode.K)) {
-            if (mana.MyCurrentValue < mana.MyMaxValue) {
-                mana.MyCurrentValue += 10;
+            if (MyMana.MyCurrentValue < MyMana.MyMaxValue) {
+                MyMana.MyCurrentValue += 10;
             }
         }
 

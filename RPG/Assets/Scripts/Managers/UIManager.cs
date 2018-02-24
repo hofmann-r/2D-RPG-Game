@@ -6,9 +6,9 @@ using System;
 
 public class UIManager : MonoBehaviour {
 
-    private static UIManager instance;
+    private bool keybindOpen = false, spellBookOpen = false, inventoryOpen = false;
 
-    private bool keybindOpen = false, spellBookOpen = false;
+    private static UIManager instance;
 
     public static UIManager MyInstance {
         get {
@@ -46,6 +46,7 @@ public class UIManager : MonoBehaviour {
     // Use this for initialization
     void Start() {
         healthStat = targetFrame.GetComponentInChildren<Stat>();
+        //debug
         //SetUsable(actionButtons[0], SpellBook.MyInstance.GetSpell("Flame Strike"));
         //SetUsable(actionButtons[1], SpellBook.MyInstance.GetSpell("Frost Bite"));
         //SetUsable(actionButtons[2], SpellBook.MyInstance.GetSpell("Flash"));
@@ -60,6 +61,11 @@ public class UIManager : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.L) && !keybindOpen) {
             spellBookOpen = !spellBookOpen;
             OpenClose(spellBookMenu);
+        }
+
+        if (Input.GetKeyDown(KeyCode.B) && !keybindOpen && !spellBookOpen) {
+            inventoryOpen = !inventoryOpen;
+            InventoryScript.MyInstance.OpenClose();
         }
 
     }
@@ -98,5 +104,11 @@ public class UIManager : MonoBehaviour {
         canvasGroup.alpha = (canvasGroup.alpha > 0) ? 0 : 1;
         canvasGroup.blocksRaycasts = (canvasGroup.blocksRaycasts == true) ? false : true;
         Time.timeScale = (Time.timeScale > 0) ? 0 : 1; //pausar o jogo
+    }
+
+    public void UpdateStackSize(IClickable clickable) {
+        if (clickable.MyCount == 0) {
+            clickable.MyIcon.color = new Color(0, 0, 0, 0);
+        }
     }
 }

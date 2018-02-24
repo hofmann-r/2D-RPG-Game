@@ -13,13 +13,11 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile>
-    </CompilerResponseFile>
+    <CompilerResponseFile></CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows64:19</UnityBuildTarget>
     <UnityVersion>2017.2.0f3</UnityVersion>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace></RootNamespace>
     <LangVersion>4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -224,6 +222,7 @@
     <Compile Include="Assets\Behaviours\DeathBehaviour.cs" />
     <Compile Include="Assets\Behaviours\SpellBehaviour.cs" />
     <Compile Include="Assets\Scripts\Buttons\ActionButton.cs" />
+    <Compile Include="Assets\Scripts\Buttons\BagButton.cs" />
     <Compile Include="Assets\Scripts\Buttons\IUsable.cs" />
     <Compile Include="Assets\Scripts\Buttons\SpellButton.cs" />
     <Compile Include="Assets\Scripts\CharacterRelated\Block.cs" />
@@ -241,6 +240,13 @@
     <Compile Include="Assets\Scripts\EnemyStates\IdleState.cs" />
     <Compile Include="Assets\Scripts\EnemyStates\IState.cs" />
     <Compile Include="Assets\Scripts\Environment\Obstacle.cs" />
+    <Compile Include="Assets\Scripts\Inventory\BagScript.cs" />
+    <Compile Include="Assets\Scripts\Inventory\InventoryScript.cs" />
+    <Compile Include="Assets\Scripts\Inventory\SlotScript.cs" />
+    <Compile Include="Assets\Scripts\Items\Bag.cs" />
+    <Compile Include="Assets\Scripts\Items\HealthPotion.cs" />
+    <Compile Include="Assets\Scripts\Items\Item.cs" />
+    <Compile Include="Assets\Scripts\Items\ManaPotion.cs" />
     <Compile Include="Assets\Scripts\Managers\GameManager.cs" />
     <Compile Include="Assets\Scripts\Managers\KeybindManager.cs" />
     <Compile Include="Assets\Scripts\Managers\LevelManager.cs" />
@@ -254,6 +260,7 @@
     <Compile Include="Assets\Scripts\TileScripts\TreeTile.cs" />
     <Compile Include="Assets\Scripts\TileScripts\WaterTile.cs" />
     <Compile Include="Assets\Scripts\UIRelated\HandScript.cs" />
+    <Compile Include="Assets\Scripts\UIRelated\IClickable.cs" />
     <Compile Include="Assets\Scripts\UIRelated\IMoveable.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
