@@ -2,7 +2,7 @@
 using UnityEngine;
 
 [Serializable]
-public class Spell : IUsable {
+public class Spell : IUsable, IMoveable {
     [SerializeField]
     private string name;
 

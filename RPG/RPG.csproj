@@ -225,6 +225,7 @@
     <Compile Include="Assets\Behaviours\SpellBehaviour.cs" />
     <Compile Include="Assets\Scripts\Buttons\ActionButton.cs" />
     <Compile Include="Assets\Scripts\Buttons\IUsable.cs" />
+    <Compile Include="Assets\Scripts\Buttons\SpellButton.cs" />
     <Compile Include="Assets\Scripts\CharacterRelated\Block.cs" />
     <Compile Include="Assets\Scripts\CharacterRelated\CameraFollow.cs" />
     <Compile Include="Assets\Scripts\CharacterRelated\Character.cs" />
@@ -252,6 +253,8 @@
     <Compile Include="Assets\Scripts\Swords\Swords.cs" />
     <Compile Include="Assets\Scripts\TileScripts\TreeTile.cs" />
     <Compile Include="Assets\Scripts\TileScripts\WaterTile.cs" />
+    <Compile Include="Assets\Scripts\UIRelated\HandScript.cs" />
+    <Compile Include="Assets\Scripts\UIRelated\IMoveable.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

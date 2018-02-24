@@ -22,8 +22,23 @@ public class ActionButton : MonoBehaviour, IPointerClickHandler {
     private Image icon;
 
     public void OnPointerClick(PointerEventData eventData) {
+        if (eventData.button == PointerEventData.InputButton.Left) {
+            if (HandScript.MyInstance.MyMoveable != null && HandScript.MyInstance.MyMoveable is IUsable) {
+                SetUsable(HandScript.MyInstance.MyMoveable as IUsable);
+            }
+        }
 
+    }
 
+    public void SetUsable(IUsable usable) {
+        this.MyUsable = usable;
+
+        UpdateVisual();
+    }
+
+    public void UpdateVisual() {
+        MyIcon.sprite = HandScript.MyInstance.Put().MyIcon;
+        MyIcon.color = Color.white;
     }
 
     public void OnClick() {

@@ -8,6 +8,8 @@ public class UIManager : MonoBehaviour {
 
     private static UIManager instance;
 
+    private bool keybindOpen = false, spellBookOpen = false;
+
     public static UIManager MyInstance {
         get {
             if (instance == null) {
@@ -44,17 +46,19 @@ public class UIManager : MonoBehaviour {
     // Use this for initialization
     void Start() {
         healthStat = targetFrame.GetComponentInChildren<Stat>();
-        SetUsable(actionButtons[0], SpellBook.MyInstance.GetSpell("Flame Strike"));
-        SetUsable(actionButtons[1], SpellBook.MyInstance.GetSpell("Frost Bite"));
-        SetUsable(actionButtons[2], SpellBook.MyInstance.GetSpell("Flash"));
+        //SetUsable(actionButtons[0], SpellBook.MyInstance.GetSpell("Flame Strike"));
+        //SetUsable(actionButtons[1], SpellBook.MyInstance.GetSpell("Frost Bite"));
+        //SetUsable(actionButtons[2], SpellBook.MyInstance.GetSpell("Flash"));
     }
 
     // Update is called once per frame
     void Update() {
-		if (Input.GetKeyDown(KeyCode.Escape)) {
+		if (Input.GetKeyDown(KeyCode.Escape) && !spellBookOpen) {
+            keybindOpen = !keybindOpen;
 			OpenClose(keybindMenu);
 		}
-        if (Input.GetKeyDown(KeyCode.M)) {
+        if (Input.GetKeyDown(KeyCode.L) && !keybindOpen) {
+            spellBookOpen = !spellBookOpen;
             OpenClose(spellBookMenu);
         }
 
@@ -88,12 +92,6 @@ public class UIManager : MonoBehaviour {
     public void ClickActionButton(string buttonName) {
         Array.Find(actionButtons, x => x.gameObject.name == buttonName).MyButton.onClick.Invoke();
 
-    }
-
-    public void SetUsable(ActionButton btn, IUsable usable) {
-        btn.MyIcon.sprite = usable.MyIcon;
-        btn.MyIcon.color = Color.white;
-        btn.MyUsable = usable;
     }
 
     public void OpenClose(CanvasGroup canvasGroup) {
