@@ -13,7 +13,8 @@ public class SwordAttackEnter : MonoBehaviour
 
 	private Player parent;
 
-	public float attackTime = 0.4f;
+	[SerializeField]
+	private float attackTime;
 
 	public float attackTimeCounter;
 

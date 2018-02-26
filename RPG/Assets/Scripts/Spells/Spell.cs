@@ -15,6 +15,9 @@ public class Spell : IUsable, IMoveable {
     [SerializeField]
     private float speed;
 
+	[SerializeField]
+	private float manaCost;
+
     [SerializeField]
     private float castTime;
 
@@ -53,6 +56,12 @@ public class Spell : IUsable, IMoveable {
             return castTime;
         }
     }
+
+	public float MyManaCost {
+		get {
+			return manaCost;
+		}
+	}
 
     public GameObject MySpellPrefab {
         get {

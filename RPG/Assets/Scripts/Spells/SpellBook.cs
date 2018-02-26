@@ -4,122 +4,133 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SpellBook : MonoBehaviour {
-    [SerializeField]
-    private Image castingBar;
+public class SpellBook : MonoBehaviour
+{
+	[SerializeField]
+	private Image castingBar;
 
-    [SerializeField]
-    private Text currentSpell;
+	[SerializeField]
+	private Text currentSpell;
 
-    [SerializeField]
-    private Text castTime;
+	[SerializeField]
+	private Text castTime;
 
-    [SerializeField]
-    private Spell[] spells;
+	[SerializeField]
+	private Spell[] spells;
 
-    [SerializeField]
-    private Image icon;
+	[SerializeField]
+	private Image icon;
 
-    [SerializeField]
-    private CanvasGroup canvasGroup;
+	[SerializeField]
+	private CanvasGroup canvasGroup;
 
-    private Coroutine spellRoutine;
+	private Coroutine spellRoutine;
 
-    private Coroutine fadeRoutine;
+	private Coroutine fadeRoutine;
 
-    private static SpellBook instance;
+	private static SpellBook instance;
 
-    public static SpellBook MyInstance {
-        get {
-            if (instance == null) {
-                instance = FindObjectOfType<SpellBook>();
-            }
+	public static SpellBook MyInstance {
+		get {
+			if (instance == null) {
+				instance = FindObjectOfType<SpellBook> ();
+			}
 
-            return instance;
-        }
-    }
+			return instance;
+		}
+	}
 
-    // Use this for initialization
-    void Start() {
+	// Use this for initialization
+	void Start ()
+	{
 
-    }
+	}
 
-    // Update is called once per frame
-    void Update() {
+	// Update is called once per frame
+	void Update ()
+	{
 
-    }
+	}
 
-    public Spell CastSpell(string spellName) {
+	public Spell CastSpell (string spellName, Player player)
+	{
 
-        Spell spell = Array.Find(spells, x => x.MyName == spellName);
+		Spell spell = Array.Find (spells, x => x.MyName == spellName);
 
-        currentSpell.text = spell.MyName;
+		if (player.MyMana.MyCurrentValue >= spell.MyManaCost) {
 
-        icon.sprite = spell.MyIcon;
+			currentSpell.text = spell.MyName;
 
-        castingBar.color = spell.MyBarColor;
-        castingBar.fillAmount = 0;
+			icon.sprite = spell.MyIcon;
 
-        spellRoutine = StartCoroutine(Progress(spell));
+			castingBar.color = spell.MyBarColor;
+			castingBar.fillAmount = 0;
 
-        fadeRoutine = StartCoroutine(FadeBar());
+			spellRoutine = StartCoroutine (Progress (spell));
 
-        return spell;
-    }
+			fadeRoutine = StartCoroutine (FadeBar ());
+		}
 
-    private IEnumerator Progress(Spell spell) {
-        float timePassed = Time.deltaTime;
+		return spell;
+	}
 
-        float rate = 1.0f / spell.MyCastTime;
+	private IEnumerator Progress (Spell spell)
+	{
+		float timePassed = Time.deltaTime;
 
-        float progress = 0.0f;
+		float rate = 1.0f / spell.MyCastTime;
 
-        while (progress <= 1.0) {
-            castingBar.fillAmount = Mathf.Lerp(0, 1, progress);
+		float progress = 0.0f;
 
-            progress += rate * Time.deltaTime;
+		while (progress <= 1.0) {
+			castingBar.fillAmount = Mathf.Lerp (0, 1, progress);
 
-            timePassed += Time.deltaTime;
+			progress += rate * Time.deltaTime;
 
-            castTime.text = (spell.MyCastTime - timePassed).ToString("F1");
-            if (spell.MyCastTime - timePassed < 0) {
-                castTime.text = "0.0";
-            }
+			timePassed += Time.deltaTime;
 
-            yield return null;
-        }
-        StopCasting();
-    }
+			castTime.text = (spell.MyCastTime - timePassed).ToString ("F1");
+			if (spell.MyCastTime - timePassed < 0) {
+				castTime.text = "0.0";
+			}
 
-    private IEnumerator FadeBar() {
-        float rate = 1.0f / 0.45f;
+			yield return null;
+		}
+		StopCasting ();
+	}
 
-        float progress = 0.0f;
+	private IEnumerator FadeBar ()
+	{
+		float rate = 1.0f / 0.45f;
 
-        while (progress <= 1.0) {
+		float progress = 0.0f;
 
-            canvasGroup.alpha = Mathf.Lerp(0, 1, progress);
+		while (progress <= 1.0) {
 
-            progress += rate * Time.deltaTime;
+			canvasGroup.alpha = Mathf.Lerp (0, 1, progress);
 
-            yield return null;
-        }
-    }
+			progress += rate * Time.deltaTime;
 
-    public void StopCasting() {
+			yield return null;
+		}
+	}
 
-        if (fadeRoutine != null) {
-            StopCoroutine(fadeRoutine);
-            canvasGroup.alpha = 0;
-            fadeRoutine = null;
-        }
-        if (spellRoutine != null) {
-            StopCoroutine(spellRoutine);
-            spellRoutine = null;
-        }
-    }
+	public void StopCasting ()
+	{
 
-    public Spell GetSpell(string spellName) {
-        return Array.Find(spells, x => x.MyName == spellName);
-    }
+		if (fadeRoutine != null) {
+			StopCoroutine (fadeRoutine);
+			canvasGroup.alpha = 0;
+			fadeRoutine = null;
+		}
+		if (spellRoutine != null) {
+			StopCoroutine (spellRoutine);
+			spellRoutine = null;
+		}
+	}
+
+	public Spell GetSpell (string spellName)
+	{
+		return Array.Find (spells, x => x.MyName == spellName);
+	}
 }
