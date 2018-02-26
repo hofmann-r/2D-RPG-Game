@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Name: ManaPotion
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: f864fa50abe96034d9f1ed89cb630988, type: 3}
-  stackSize: 2
-  mana: 10
+  stackSize: 10
+  mana: 30

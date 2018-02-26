@@ -10,6 +10,8 @@ public class Bag : Item, IUsable {
     [SerializeField]
     private GameObject bagPrefab;
 
+    public BagButton MyBagButton { get; set; }
+
     public BagScript MyBagScript { get; set; }
 
     public int Slots {

@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Name: HealthPotion
   m_EditorClassIdentifier: 
   icon: {fileID: 21300000, guid: f9f106ee32548a344a3b43700f98446e, type: 3}
-  stackSize: 2
-  health: 10
+  stackSize: 10
+  health: 60

@@ -10,6 +10,8 @@ class AttackState : IState {
 
     private float extraRange = .1f; //range para comear a seguir o player
 
+    private Player player;
+
     public void Enter(Enemy parent) {
         this.parent = parent;
     }
@@ -41,9 +43,10 @@ class AttackState : IState {
     public IEnumerator Attack() {
 
         parent.IsEnemyAttacking = true;
-
+       // MyTar = collision.GetComponentInParent<Character>();
         parent.MyAnimator.SetTrigger("attackEnemy");
-
+        player = parent.MyTarget.GetComponent<Player>();
+        player.MyHealth.MyCurrentValue -= 3;
         yield return new WaitForSeconds(parent.MyAnimator.GetCurrentAnimatorStateInfo(2).length);
 
         parent.IsEnemyAttacking = false;

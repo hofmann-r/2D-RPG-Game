@@ -12,4 +12,8 @@ public interface IClickable  {
     int MyCount {
         get;
     }
+
+    Text MyStackSize {
+        get;
+    }
 }

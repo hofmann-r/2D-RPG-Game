@@ -108,6 +108,10 @@ public class Player : Character {
             Mathf.Clamp(transform.position.y, min.y, max.y),
             transform.position.z);
 
+        if(MyHealth.MyCurrentValue <= 0) {
+            Destroy(gameObject);
+        }
+
         base.Update();
     }
 

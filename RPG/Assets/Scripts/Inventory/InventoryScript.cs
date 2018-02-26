@@ -30,6 +30,33 @@ public class InventoryScript : MonoBehaviour {
         }
     }
 
+    public int MyEmptySlotCount {
+        get {
+            int count = 0;
+            foreach (Bag bag in bags) {
+                count += bag.MyBagScript.MyEmptySlotCount;
+            }
+            return count;
+        }
+    }
+
+    public SlotScript FromSlot {
+        get {
+            return fromSlot;
+        }
+
+        set {
+
+            fromSlot = value;
+
+            if(value != null) {
+                fromSlot.MyIcon.color = Color.grey;
+            }
+        }
+    }
+
+    private SlotScript fromSlot;
+
     private void Update() {
         if (Input.GetKeyDown(KeyCode.V)) { //debug
             Bag bag = (Bag)Instantiate(items[0]);
@@ -86,9 +113,15 @@ public class InventoryScript : MonoBehaviour {
             if (bagButton.MyBag == null) {
                 bagButton.MyBag = bag;
                 bags.Add(bag);
+                bag.MyBagButton = bagButton;
                 break;
             }
         }
+    }
+
+    public void RemoveBag(Bag bag) {
+        bags.Remove(bag);
+        Destroy(bag.MyBagScript.gameObject);
     }
 
     private void PlaceInEmpty(Item item) {

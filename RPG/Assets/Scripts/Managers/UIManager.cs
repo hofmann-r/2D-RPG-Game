@@ -107,8 +107,19 @@ public class UIManager : MonoBehaviour {
     }
 
     public void UpdateStackSize(IClickable clickable) {
+
+        if (clickable.MyCount > 1) {
+            clickable.MyStackSize.text = clickable.MyCount.ToString();
+            clickable.MyStackSize.color = Color.white;
+            clickable.MyIcon.color = Color.white;
+        } else {
+            clickable.MyStackSize.color = new Color(0, 0, 0, 0); //se for só um, mostra apenas o ícone do item
+            clickable.MyIcon.color = Color.white;
+        }
+
         if (clickable.MyCount == 0) {
             clickable.MyIcon.color = new Color(0, 0, 0, 0);
+            clickable.MyStackSize.color = new Color(0, 0, 0, 0);
         }
     }
 }
