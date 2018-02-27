@@ -22,13 +22,25 @@ public class InventoryScript : MonoBehaviour {
     private List<Bag> bags = new List<Bag>();
 
     [SerializeField]
-    private Item[] items;
+	private Item[] items;
+
+	public Item[] MyItems {
+		get {
+			return items;
+		}
+	}
 
     public bool CanAddBag {
         get {
             return bags.Count < 3;
         }
     }
+
+	public bool BagsEmpty {
+		get {
+			return bags.Count == 0;
+		}
+	}
 
     public int MyEmptySlotCount {
         get {
@@ -81,9 +93,9 @@ public class InventoryScript : MonoBehaviour {
     }
 
     private void Awake() {
-        Bag bag = (Bag)Instantiate(items[0]);
-        bag.Initialize(16);
-        bag.Use();
+    //    Bag bag = (Bag)Instantiate(items[0]);
+    //    bag.Initialize(16);
+    //    bag.Use();
     }
 
     public void AddItem(Item item) {

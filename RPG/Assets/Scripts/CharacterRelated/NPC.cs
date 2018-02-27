@@ -12,6 +12,9 @@ public class NPC : Character {
 
     public event CharacterRemoved characterRemoved;
 
+	[SerializeField]
+	private Transform[] items;
+
     [SerializeField]
     private Sprite portrait;
 
@@ -41,6 +44,21 @@ public class NPC : Character {
 
     public void OnCharacterRemoved() {
         if (characterRemoved != null) {
+			int randomNumber = Random.Range (1, 11);
+			if (randomNumber == 1 || randomNumber == 2) {
+				Instantiate (items [0], transform.position, Quaternion.identity);
+			}
+
+			if(randomNumber == 3 || randomNumber == 4){
+				Instantiate (items [1], transform.position, Quaternion.identity);
+			}
+
+			//inimigos não vão dropar bags
+		/*	if(randomNumber == 7){
+				Instantiate (items [2], transform.position, Quaternion.identity);
+			}*/
+
+
             characterRemoved();
         }
 
