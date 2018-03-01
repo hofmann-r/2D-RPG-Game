@@ -21,10 +21,10 @@ MonoBehaviour:
     y: 30
     width: 1920
     height: 947
-  m_MinSize: {x: 711, y: 471}
-  m_MaxSize: {x: 18006, y: 14021}
+  m_MinSize: {x: 713, y: 492}
+  m_MaxSize: {x: 18008, y: 14042}
   vertical: 0
-  controlID: 6867
+  controlID: 148
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -121,10 +121,10 @@ MonoBehaviour:
     y: 0
     width: 637
     height: 947
-  m_MinSize: {x: 202, y: 442}
-  m_MaxSize: {x: 4002, y: 8042}
+  m_MinSize: {x: 202, y: 421}
+  m_MaxSize: {x: 4002, y: 8021}
   vertical: 1
-  controlID: 6868
+  controlID: 149
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -179,14 +179,14 @@ MonoBehaviour:
     width: 635
     height: 420
   m_SceneLighting: 1
-  lastFramingTime: 1953.402786641076
+  lastFramingTime: 977.0832326336428
   m_2DMode: 1
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -4.401806, y: 6.65229, z: -0.11328125}
+    m_Target: {x: -29.391731, y: -3.3212948, z: 0.02734375}
     speed: 2
-    m_Value: {x: -4.401806, y: 6.65229, z: -0.11328125}
+    m_Value: {x: -29.391731, y: -3.3212948, z: 0.02734375}
   m_RenderMode: 0
   m_ValidateTrueMetals: 0
   m_SceneViewState:
@@ -213,9 +213,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 13.818745
+    m_Target: 19.161646
     speed: 2
-    m_Value: 13.818745
+    m_Value: 19.161646
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -317,10 +317,10 @@ MonoBehaviour:
     - {x: 302.8, y: 136.6}
     - {x: 302.8, y: 136.6}
   m_PreviewAnimator: {fileID: 0}
-  m_AnimatorController: {fileID: 9100000, guid: 8cd22c195cdecf0429f0f92c0682ddda,
+  m_AnimatorController: {fileID: 9100000, guid: f6d77302cef8cd14f97184d3d7e5839c,
     type: 2}
   m_BreadCrumbs:
-  - m_Target: {fileID: 1107503740079813112, guid: 8cd22c195cdecf0429f0f92c0682ddda,
+  - m_Target: {fileID: 1107503740079813112, guid: f6d77302cef8cd14f97184d3d7e5839c,
       type: 2}
     m_ScrollPosition: {x: 0, y: 0}
   stateMachineGraph: {fileID: 0}
@@ -351,8 +351,8 @@ MonoBehaviour:
     y: 441
     width: 637
     height: 506
-  m_MinSize: {x: 202, y: 221}
-  m_MaxSize: {x: 4002, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 2}
   m_Panes:
   - {fileID: 2}
@@ -378,10 +378,10 @@ MonoBehaviour:
     y: 0
     width: 834
     height: 947
-  m_MinSize: {x: 234, y: 471}
-  m_MaxSize: {x: 10004, y: 14021}
+  m_MinSize: {x: 234, y: 492}
+  m_MaxSize: {x: 10004, y: 14042}
   vertical: 1
-  controlID: 6807
+  controlID: 81
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -434,24 +434,24 @@ MonoBehaviour:
     width: 830
     height: 382
   m_TreeViewState:
-    scrollPos: {x: 0, y: 115}
-    m_SelectedIDs: 54fbffff
-    m_LastClickedID: -1196
-    m_ExpandedIDs: 54fbffffa6fbffff00000000643b0000b03c0000
+    scrollPos: {x: 0, y: 3}
+    m_SelectedIDs: 58070000
+    m_LastClickedID: 0
+    m_ExpandedIDs: a6fbffff00000000943900007a3b0000663c0000903c0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: 
-      m_OriginalName: 
+      m_Name: GameOver
+      m_OriginalName: GameOver
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 0
+      m_UserData: -20430
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 11
+      m_OriginalEventType: 0
       m_IsRenamingFilename: 0
       m_ClientGUIView: {fileID: 10}
     m_SearchString: 
@@ -478,8 +478,8 @@ MonoBehaviour:
     y: 403
     width: 834
     height: 544
-  m_MinSize: {x: 230, y: 250}
-  m_MaxSize: {x: 10000, y: 10000}
+  m_MinSize: {x: 234, y: 271}
+  m_MaxSize: {x: 10004, y: 10021}
   m_ActualView: {fileID: 13}
   m_Panes:
   - {fileID: 13}
@@ -523,19 +523,19 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/Prefabs/Items/ItemsPickGround
+    - Assets/Scripts/EnemyStates
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/Prefabs/Items/ItemsPickGround
+  - Assets/Scripts/EnemyStates
   m_LastFoldersGridSize: 16
   m_LastProjectPath: C:\Users\roberto.hofmann\Documents\GitHub\TCCRPG\RPG
   m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 8c2a0000
-    m_LastClickedID: 10892
-    m_ExpandedIDs: 0000000062270000b02700000c280000dc2b00006c2e0000503e0000523e000000ca9a3bffffff7f
+    m_SelectedIDs: a82c0000
+    m_LastClickedID: 11432
+    m_ExpandedIDs: 0000000062270000b02700000c2800006c2e0000703e0000723e000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -563,7 +563,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 0000000062270000b02700000c280000dc2b00006c2e0000503e0000523e000000ca9a3bffffff7f
+    m_ExpandedIDs: 0000000062270000b02700006c2e000010310000703e0000723e0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -588,8 +588,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 54fbffff
-    m_LastClickedInstanceID: -1196
+    m_SelectedInstanceIDs: 58070000
+    m_LastClickedInstanceID: 1880
     m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: e80400004e1c0000a4080000c01d0000b81f0000661e0000621e00003c07000036200000aa13ffff2e200000c2dcffff5e230000f2040000f009000022f1ffff182a000014240000c405000034360000e82a000078080000beb7ffffec30000026320000d8f3feff2a3700001c9dfeff783dfeffca1bfeff8cccfdff70b5fdff860b0000da0a0000600d0000080e0000e40b00000c0f0000a60e00009a0e0000c42e00000a0d0000fe0a00001e0b0000080700004a090000a03b0000b2090000040b00000e070000280b00003a0d000050050000140700003c0d00004e0b00002e0b000010050000640b0000540d00005c0b00003c0b00001e070000ca30000076280000c2250000600b0000dc5ffbff1c2e00007c2e00008a290000e82e00006c44f7ff8a0b0000980b000036330000d2290000f0280000d22a0000882800002c2900005c2400000e2b00000e2f0000f22c0000122c0000ae370000fe46000000000000
     m_RenameOverlay:
@@ -636,8 +636,8 @@ MonoBehaviour:
     y: 0
     width: 449
     height: 947
-  m_MinSize: {x: 275, y: 50}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 277, y: 71}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 15}
   m_Panes:
   - {fileID: 15}

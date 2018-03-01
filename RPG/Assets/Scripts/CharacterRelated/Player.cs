@@ -27,6 +27,9 @@ public class Player : Character
 	[SerializeField]
 	private GameObject[] swordBoxCollider;
 
+	[SerializeField]
+	private CanvasGroup gameOverScreen;
+
 	private float swordAttackRange;
 
 	private SwordAttackEnter swordAttackEnter;
@@ -109,6 +112,9 @@ public class Player : Character
 			transform.position.z);
 
 		if (MyHealth.MyCurrentValue <= 0) {
+
+			gameOverScreen.alpha = 1;
+
 			Destroy (gameObject);
 		}
 
